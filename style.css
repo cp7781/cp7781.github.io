@@ -1,8 +1,8 @@
 body {
     background: lightslategray;
     color: seashell;
-    font-size: 2em;
-    padding: 2em;
+    font-size: 3em;
+    padding: 3.3em;
 }
 p#message {
     font-family: monospace;
