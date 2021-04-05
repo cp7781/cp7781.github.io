@@ -1,9 +1,14 @@
 body {
+    padding: 3.3em;
     background: darkslategrey;
     color: seashell;
     font-size: 3em;
-    padding: 3.3em;
+}
+h1 {
+    font-family: sans-serif;
+    text-shadow: 0 0 .05em seashell;
 }
 p#message {
     font-family: monospace;
+    text-shadow: 0 0 .05em seashell;
 }
