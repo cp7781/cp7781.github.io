@@ -1,8 +1,9 @@
 body {
-    padding: 3.3em;
     background: darkslategrey;
     color: seashell;
     font-size: 3em;
+    margin: 0;
+    padding: 3.3em;
 }
 h1 {
     font-family: sans-serif;
@@ -11,4 +12,15 @@ h1 {
 p#message {
     font-family: monospace;
     text-shadow: 0 0 .05em seashell;
+}
+div.link-project {
+    font-size: .34em;
+    font-family: monospace;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+div.link-project a {
+    text-decoration: none;
+    color: seashell;
 }
