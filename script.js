@@ -1,5 +1,7 @@
+"use strict";
+
 function change() {
-    let timeout = 666;
+    let timeout = 79;
     let message = document.getElementById('message');
     let text = message.textContent;
     let length = text.length
@@ -14,4 +16,4 @@ function change() {
         window.setTimeout(changeMessage, timeout);
     }
     window.setTimeout(changeMessage, timeout);
-}
+};
