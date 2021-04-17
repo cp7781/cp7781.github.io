@@ -2,19 +2,18 @@
 "use strict";
 
 function change() {
-    let timeout = 79;
-    let message = document.getElementById('message');
-    let text = message.textContent;
-    let length = text.length;
-    let sad = null;
+    const timeout = 79;
+    const message = document.getElementById('message');
+    const text = message.textContent;
+    const length = text.length;
     let index = 0;
     function changeMessage() {
         ++index;
         index %= length;
-        let text2 = text.substring(0, index);
-        text2 += text[index].toUpperCase();
-        text2 += text.substring(index + 1, length);
-        message.innerHTML = text2;
+        let changedText = text.substring(0, index);
+        changedText += text[index].toUpperCase();
+        changedText += text.substring(index + 1, length);
+        message.innerHTML = changedText;
         window.setTimeout(changeMessage, timeout);
     }
     window.setTimeout(changeMessage, timeout);
