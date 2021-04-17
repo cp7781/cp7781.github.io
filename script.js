@@ -5,7 +5,8 @@ function change() {
     let timeout = 79;
     let message = document.getElementById('message');
     let text = message.textContent;
-    let length = text.length
+    let length = text.length;
+    let sad = null;
     let index = 0;
     function changeMessage() {
         ++index;
