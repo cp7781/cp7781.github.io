@@ -5,12 +5,12 @@
 		}
 	],
 	"settings": {
-		"editor.wordWrap": "on"
+		"editor.wordWrap": "on",
+		"git.autofetch": true
 	},
 	"launch": {
 		"version": "0.2.0",
 		"configurations": [
-		
 			{
 				"type": "pwa-chrome",
 				"request": "launch",
