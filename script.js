@@ -9,10 +9,7 @@ function change() {
     function changeMessage() {
         ++index;
         index %= length;
-        let changedText = text.substring(0, index);
-        changedText += text[index].toUpperCase();
-        changedText += text.substring(index + 1, length);
-        message.innerHTML = changedText;
+        message.innerHTML = text.substring(0, index) + text[index].toUpperCase() + text.substring(index + 1, length);
         window.setTimeout(changeMessage, timeout);
     }
     window.setTimeout(changeMessage, timeout);
