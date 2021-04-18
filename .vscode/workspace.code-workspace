@@ -6,5 +6,18 @@
 	],
 	"settings": {
 		"editor.wordWrap": "on"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+		
+			{
+				"type": "pwa-chrome",
+				"request": "launch",
+				"name": "Chrome",
+				"url": "${workspaceFolder}/index.html",
+				"webRoot": "${workspaceFolder}"
+			}
+		]
 	}
 }
