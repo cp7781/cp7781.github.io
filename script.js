@@ -6,11 +6,9 @@ function change() {
     const text = message.textContent;
     const length = text.length;
     let index = 0;
-    function changeMessage() {
+    window.setInterval(() => {
         ++index;
         index %= length;
         message.innerHTML = text.substring(0, index) + text[index].toUpperCase() + text.substring(index + 1, length);
-        window.setTimeout(changeMessage, timeout);
-    }
-    window.setTimeout(changeMessage, timeout);
+    }, timeout);
 };
