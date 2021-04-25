@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": ".."
+		},
+		{
+			"path": "..\\..\\..\\..\\Downloads\\MDN\\learning-area"
 		}
 	],
 	"settings": {
