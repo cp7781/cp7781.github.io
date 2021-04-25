@@ -54,12 +54,19 @@ function drawCircles() {
     }
 
     function generateRandomCircle(drawboardWidth, drawboardHeight) {
-        const radius = generateRandomInteger(3, 34);
+
+        const smallestSideLength = drawboardWidth > drawboardHeight ? drawboardHeight : drawboardWidth;
+        const minimumRadius = Math.floor(smallestSideLength * .004);
+        const maximumRadius = Math.floor(smallestSideLength * .036);
+
+        const radius = generateRandomInteger(minimumRadius, maximumRadius);
         const x = generateRandomInteger(radius, drawboardWidth - radius);
         const y = generateRandomInteger(radius, drawboardHeight - radius);
         const velocityX = generateRandomInteger(1, 3);
         const velocityY = generateRandomInteger(1, 3);
+
         return new Circle(radius, x, y, velocityX, velocityY);
+
     }
 
     {
