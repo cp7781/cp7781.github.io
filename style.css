@@ -5,14 +5,17 @@ body {
     margin: 0;
     padding: 3.3em;
 }
+
 h1 {
     font-family: sans-serif;
     text-shadow: 0 0 .05em seashell;
 }
+
 p#message {
     font-family: monospace;
     text-shadow: 0 0 .05em seashell;
 }
+
 div.link-project {
     font-size: .34em;
     font-family: monospace;
@@ -20,7 +23,15 @@ div.link-project {
     bottom: 1em;
     right: 1em;
 }
+
 div.link-project a {
     text-decoration: none;
     color: seashell;
+}
+
+canvas#drawboard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }

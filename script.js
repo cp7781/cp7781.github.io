@@ -66,24 +66,33 @@ function drawCircles() {
 
         const drawboard = document.getElementById('drawboard');
         const drawboardContext = drawboard.getContext('2d');
-        const drawboardWidth = drawboard.width;
-        const drawboardHeight = drawboard.height;
+        drawboard.width = window.innerWidth;
+        drawboard.height = window.innerHeight;
 
         const circles = new Array();
         for (let index = 0; index < 9; index++) {
-            circles.push(generateRandomCircle(drawboardWidth, drawboardHeight));
+            circles.push(generateRandomCircle(drawboard.width, drawboard.height));
         }
+
+        let animationStopped = false;
 
         function animateCircles() {
             drawboardContext.fillStyle = 'rgb(47, 79, 79)';
-            drawboardContext.fillRect(0, 0, drawboardWidth, drawboardHeight);
+            drawboardContext.fillRect(0, 0, drawboard.width, drawboard.height);
             circles.forEach(circle => {
-                moveCircle(circle, drawboardWidth, drawboardHeight);
+                moveCircle(circle, drawboard.width, drawboard.height);
                 drawCircle(circle, drawboardContext);
             });
-            requestAnimationFrame(animateCircles);
-        };
+            if (!animationStopped) {
+                requestAnimationFrame(animateCircles);
+            }
+        }
         animateCircles();
+
+        window.onresize = () => {
+            animationStopped = true;
+            drawCircles();
+        };
 
     }
 
