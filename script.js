@@ -1,4 +1,7 @@
-"use strict";
+function execute() {
+    changeMessage();
+    drawCircles();
+}
 
 function changeMessage() {
     const timeout = 79;
