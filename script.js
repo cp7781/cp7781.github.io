@@ -32,8 +32,8 @@ function drawCircles() {
         }
 
         set red(red) {
-            if (red < 173) {
-                red = 173;
+            if (red < 0) {
+                red = 0;
             } else if (red > 255) {
                 red = 255;
             }
@@ -45,8 +45,8 @@ function drawCircles() {
         }
 
         set green(green) {
-            if (green < 173) {
-                green = 173;
+            if (green < 0) {
+                green = 0;
             } else if (green > 255) {
                 green = 255;
             }
@@ -58,8 +58,8 @@ function drawCircles() {
         }
 
         set blue(blue) {
-            if (blue < 173) {
-                blue = 173;
+            if (blue < 0) {
+                blue = 0;
             } else if (blue > 255) {
                 blue = 255;
             }
@@ -128,18 +128,30 @@ function drawCircles() {
         }
 
         adjustColor() {
+
+            function limit(value) {
+                if (value < 173) {
+                    return 173;
+                } else if (value > 255) {
+                    return 255
+                } else {
+                    return value;
+                }
+            }
+
             const value = generateRandomInteger(0, 1) > 0 ? 1 : -1;
             switch (generateRandomInteger(0, 3)) {
                 case 0:
-                    this.color.red += value;
+                    this.color.red = limit(this.color.red + value);
                     break;
                 case 1:
-                    this.color.green += value;
+                    this.color.green = limit(this.color.green + value);
                     break;
                 case 2:
-                    this.color.blue += value;
+                    this.color.blue = limit(this.color.blue + value);
                     break;
             }
+
         }
 
         move() {
