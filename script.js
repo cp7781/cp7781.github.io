@@ -87,14 +87,14 @@ function drawCircles() {
 
     class Circle {
 
-        constructor(radius, x, y, velocityX, velocityY, color, drawboard) {
-            this.radius = radius;
-            this.x = x;
-            this.y = y;
-            this.velocityX = velocityX;
-            this.velocityY = velocityY;
-            this.color = color;
+        constructor(drawboard) {
             this.drawboard = drawboard;
+            this.radius = 10;
+            this.x = 10;
+            this.y = 10;
+            this.velocityX = 1;
+            this.velocityY = 1;
+            this.color = new Color(255, 255, 255, 1);
         }
 
         static generateRandomCircle(drawboard) {
@@ -112,10 +112,18 @@ function drawCircles() {
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
-                0.68
+                .68
             );
 
-            return new Circle(radius, x, y, velocityX, velocityY, color, drawboard);
+            const circle = new Circle(drawboard);
+            circle.radius = radius;
+            circle.x = x;
+            circle.y = y;
+            circle.velocityX = velocityX;
+            circle.velocityY = velocityY;
+            circle.color = color;
+
+            return circle;
 
         }
 
@@ -159,6 +167,12 @@ function drawCircles() {
             drawboardContext.fill();
         }
 
+        animate() {
+            this.adjustColor();
+            this.move();
+            this.draw();
+        }
+
     }
 
     function generateRandomInteger(minimum, maximum) {
@@ -182,11 +196,7 @@ function drawCircles() {
             const drawboardContext = drawboard.getContext('2d');
             drawboardContext.fillStyle = 'rgb(47, 79, 79)';
             drawboardContext.fillRect(0, 0, drawboard.width, drawboard.height);
-            circles.forEach(circle => {
-                circle.adjustColor();
-                circle.move();
-                circle.draw();
-            });
+            circles.forEach(circle => circle.animate());
             if (!animationStopped) {
                 requestAnimationFrame(animateCircles);
             }
