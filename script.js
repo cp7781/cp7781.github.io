@@ -191,32 +191,68 @@ function drawCircles() {
         return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     }
 
+    class Animation {
+
+        constructor(drawboard) {
+            this.drawboard = drawboard;
+            this.drawboardContext = drawboard.getContext('2d');
+            this.backgroundGradient = this.drawboardContext.createLinearGradient(0, 0, 0, drawboard.height);
+            this.backgroundGradient.addColorStop(0, 'lightslategray');
+            this.backgroundGradient.addColorStop(1, 'darkslategray');
+            this.circles = new Array();
+            for (let index = 0; index < 9; index++) {
+                this.circles.push(Circle.generateRandomCircle(drawboard));
+            }
+            this.stopped = false;
+            this.timeStamp = performance.now();
+        }
+
+        execute(timeStamp) {
+            this.clearScreen();
+            this.drawFPS(timeStamp);
+            this.drawCircles();
+        }
+
+        clearScreen() {
+            this.drawboardContext.fillStyle = this.backgroundGradient;
+            this.drawboardContext.fillRect(0, 0, this.drawboard.width, this.drawboard.height);
+        }
+
+        drawCircles() {
+            this.circles.forEach(circle => circle.animate());
+            if (!this.stopped) {
+                requestAnimationFrame((timeStamp) => this.execute(timeStamp));
+            }
+        }
+
+        drawFPS(timeStamp) {
+
+            const now = performance.now();
+            const fps = Math.floor(1000.0 / (now - this.timeStamp));
+            this.timeStamp = timeStamp;
+
+            this.drawboardContext.fillStyle = 'slategray';
+            this.drawboardContext.font = ".32em sans-serif";
+            this.drawboardContext.fillText(
+                fps,
+                3,
+                this.drawboard.height - 3
+            );
+        }
+
+    }
+
     {
 
         const drawboard = document.getElementById('drawboard');
         drawboard.width = window.innerWidth;
         drawboard.height = window.innerHeight;
 
-        const circles = new Array();
-        for (let index = 0; index < 9; index++) {
-            circles.push(Circle.generateRandomCircle(drawboard));
-        }
-
-        let animationStopped = false;
-
-        function animateCircles() {
-            const drawboardContext = drawboard.getContext('2d');
-            drawboardContext.fillStyle = 'rgb(47, 79, 79)';
-            drawboardContext.fillRect(0, 0, drawboard.width, drawboard.height);
-            circles.forEach(circle => circle.animate());
-            if (!animationStopped) {
-                requestAnimationFrame(animateCircles);
-            }
-        }
-        animateCircles();
+        const animation = new Animation(drawboard);
+        animation.execute();
 
         window.onresize = () => {
-            animationStopped = true;
+            animation.stopped = true;
             drawCircles();
         };
 
