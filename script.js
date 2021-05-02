@@ -203,41 +203,51 @@ function drawCircles() {
             for (let index = 0; index < 9; index++) {
                 this.circles.push(Circle.generateRandomCircle(drawboard));
             }
+            this.fpsCounter = new FPSCounter(drawboard);
             this.stopped = false;
             this.timeStamp = performance.now();
         }
 
         execute(timeStamp) {
-            this.clearScreen();
-            this.drawFPS(timeStamp);
-            this.drawCircles();
-        }
-
-        clearScreen() {
+            
             this.drawboardContext.fillStyle = this.backgroundGradient;
             this.drawboardContext.fillRect(0, 0, this.drawboard.width, this.drawboard.height);
-        }
 
-        drawCircles() {
+            this.fpsCounter.draw(timeStamp);
+
             this.circles.forEach(circle => circle.animate());
             if (!this.stopped) {
                 requestAnimationFrame((timeStamp) => this.execute(timeStamp));
             }
+
         }
 
-        drawFPS(timeStamp) {
+    }
 
-            const now = performance.now();
-            const fps = Math.floor(1000.0 / (now - this.timeStamp));
-            this.timeStamp = timeStamp;
+    class FPSCounter {
 
+        constructor(drawboard) {
+            this.drawboard = drawboard;
+            this.drawboardContext = drawboard.getContext('2d');
+            this.counter = new Array();
+            this.lastTimeStamp = performance.now();
+        }
+
+        draw(timeStamp) {
+            if ((timeStamp - this.lastTimeStamp) > 0) {
+                this.counter.push({
+                    timeStamp: timeStamp,
+                    fps: Math.round(1000 / (timeStamp - this.lastTimeStamp))
+                })
+            }
+            this.lastTimeStamp = timeStamp;
+            this.counter = this.counter.filter(count => timeStamp - count.timeStamp < 1000);
+            let averageFPS = 0;
+            this.counter.forEach(count => averageFPS += count.fps);
+            averageFPS = Math.round(averageFPS / this.counter.length);
             this.drawboardContext.fillStyle = 'slategray';
             this.drawboardContext.font = ".32em sans-serif";
-            this.drawboardContext.fillText(
-                fps,
-                3,
-                this.drawboard.height - 3
-            );
+            this.drawboardContext.fillText(averageFPS + ' fps', 7, this.drawboard.height - 7);
         }
 
     }
