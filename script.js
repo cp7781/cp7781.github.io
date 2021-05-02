@@ -234,10 +234,11 @@ function drawCircles() {
         }
 
         draw(timeStamp) {
-            if ((timeStamp - this.lastTimeStamp) > 0) {
+            const timeDifference = timeStamp - this.lastTimeStamp;
+            if (timeDifference > 0) {
                 this.counter.push({
                     timeStamp: timeStamp,
-                    fps: Math.round(1000 / (timeStamp - this.lastTimeStamp))
+                    fps: Math.round(1000 / timeDifference)
                 })
             }
             this.lastTimeStamp = timeStamp;
