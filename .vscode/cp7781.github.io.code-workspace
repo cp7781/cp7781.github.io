@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"name": "cp7781.github.io",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"editor.wordWrap": "on",
+		"git.autofetch": true
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"type": "pwa-chrome",
+				"request": "launch",
+				"name": "Chrome",
+				"url": "${workspaceFolder}/index.html",
+				"webRoot": "${workspaceFolder}"
+			}
+		]
+	}
+}
