@@ -38,11 +38,11 @@ canvas#drawboard {
     }
     h1 {
         font-size: 10vh;
-        text-shadow: 0 0 1vh seashell;
+        text-shadow: 0 0 .5vh seashell;
     }
     p#message {
         font-size: 5vh;
-        text-shadow: 0 0 .5vh seashell;
+        text-shadow: 0 0 .25vh seashell;
     }
     div.link-project {
         font-size: 1.5vh;
@@ -57,11 +57,11 @@ canvas#drawboard {
     }
     h1 {
         font-size: 10vw;
-        text-shadow: 0 0 1vw seashell;
+        text-shadow: 0 0 .5vw seashell;
     }
     p#message {
         font-size: 5vw;
-        text-shadow: 0 0 .5vw seashell;
+        text-shadow: 0 0 .25vw seashell;
     }
     div.link-project {
         font-size: 1.5vw;
