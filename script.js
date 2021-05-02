@@ -234,11 +234,11 @@ function drawCircles() {
 
             const font = `'Source Sans Pro'`;
             if (drawboard.width > drawboard.height) {
-                this.x = Math.round(drawboard.height * .0068);
+                this.x = Math.round(drawboard.height * .01);
                 this.y = drawboard.height - this.x;
                 this.font = Math.round(drawboard.height * .015) + 'px ' + font;
             } else {
-                this.x = Math.round(drawboard.width * .0068);
+                this.x = Math.round(drawboard.width * .01);
                 this.y = drawboard.height - this.x;
                 this.font = Math.round(drawboard.width * .015) + 'px ' + font;
             }
