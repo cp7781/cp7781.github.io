@@ -1,27 +1,25 @@
 body {
     background: darkslategrey;
     color: seashell;
-    font-size: 3em;
     margin: 0;
-    padding: 3.3em;
 }
 
 h1 {
-    font-family: sans-serif;
-    text-shadow: 0 0 .05em seashell;
+    font-family: 'New Tegomin', serif;
+    font-weight: 400;
 }
 
 p#message {
-    font-family: monospace;
-    text-shadow: 0 0 .05em seashell;
+    font-family: 'Syne Mono', monospace;
+    font-weight: 400;
 }
 
 div.link-project {
-    font-size: .34em;
-    font-family: monospace;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
     position: absolute;
-    bottom: 1em;
-    right: 1em;
+    bottom: 1vw;
+    right: 1vw;
 }
 
 div.link-project a {
@@ -34,4 +32,42 @@ canvas#drawboard {
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+@media (orientation: landscape) {
+    body {
+        padding: 10vh;
+    }
+    h1 {
+        font-size: 10vh;
+        text-shadow: 0 0 1vh seashell;
+    }
+    p#message {
+        font-size: 5vh;
+        text-shadow: 0 0 .5vh seashell;
+    }
+    div.link-project {
+        font-size: 1.5vh;
+        bottom: .68vh;
+        right: .68vh;
+    }
+}
+
+@media (orientation: portrait) {
+    body {
+        padding: 10vw;
+    }
+    h1 {
+        font-size: 10vw;
+        text-shadow: 0 0 1vw seashell;
+    }
+    p#message {
+        font-size: 5vw;
+        text-shadow: 0 0 .5vw seashell;
+    }
+    div.link-project {
+        font-size: 1.5vw;
+        bottom: .68vw;
+        right: .68vw;
+    }
 }

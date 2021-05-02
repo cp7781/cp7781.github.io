@@ -231,6 +231,18 @@ function drawCircles() {
             this.drawboardContext = drawboard.getContext('2d');
             this.counter = new Array();
             this.lastTimeStamp = performance.now();
+
+            const font = `'Source Sans Pro'`;
+            if (drawboard.width > drawboard.height) {
+                this.x = Math.round(drawboard.height * .0068);
+                this.y = drawboard.height - this.x;
+                this.font = Math.round(drawboard.height * .015) + 'px ' + font;
+            } else {
+                this.x = Math.round(drawboard.width * .0068);
+                this.y = drawboard.height - this.x;
+                this.font = Math.round(drawboard.width * .015) + 'px ' + font;
+            }
+
         }
 
         draw(timeStamp) {
@@ -247,8 +259,8 @@ function drawCircles() {
             this.counter.forEach(count => averageFPS += count.fps);
             averageFPS = Math.round(averageFPS / this.counter.length);
             this.drawboardContext.fillStyle = 'slategray';
-            this.drawboardContext.font = ".32em sans-serif";
-            this.drawboardContext.fillText(averageFPS + ' fps', 7, this.drawboard.height - 7);
+            this.drawboardContext.font = this.font;
+            this.drawboardContext.fillText(averageFPS + ' fps', this.x, this.y);
         }
 
     }
