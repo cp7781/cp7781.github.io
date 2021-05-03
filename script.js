@@ -146,8 +146,18 @@ function drawCircles() {
 
         draw() {
             const drawboardContext = drawboard.getContext('2d');
+            const gradient = drawboardContext.createRadialGradient(
+                this.x - this.radius * .32,
+                this.y - this.radius * .32,
+                this.radius,
+                this.x - this.radius,
+                this.y - this.radius,
+                this.radius
+            );
+            gradient.addColorStop(0, new Color(this.color.red, this.color.green, this.color.blue, .32).rgba);
+            gradient.addColorStop(1, this.color.rgba);
+            drawboardContext.fillStyle = gradient;
             drawboardContext.beginPath();
-            drawboardContext.fillStyle = this.color.rgba;
             drawboardContext.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
             drawboardContext.fill();
         }
@@ -219,9 +229,9 @@ function drawCircles() {
             this.stopped = false;
             this.timeStamp = performance.now();
         }
-        
+
         execute(timeStamp) {
-            
+
             const backgroundGradient = this.drawboardContext.createLinearGradient(0, 0, 0, drawboard.height);
             backgroundGradient.addColorStop(0, 'darkslategray');
             this.backgroundColor = adjustColor(this.backgroundColor, 32, 96);
