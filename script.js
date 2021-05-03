@@ -127,33 +127,6 @@ function drawCircles() {
 
         }
 
-        adjustColor() {
-
-            function limit(value) {
-                if (value < 173) {
-                    return 173;
-                } else if (value > 255) {
-                    return 255
-                } else {
-                    return value;
-                }
-            }
-
-            const value = generateRandomInteger(0, 1) > 0 ? 1 : -1;
-            switch (generateRandomInteger(0, 3)) {
-                case 0:
-                    this.color.red = limit(this.color.red + value);
-                    break;
-                case 1:
-                    this.color.green = limit(this.color.green + value);
-                    break;
-                case 2:
-                    this.color.blue = limit(this.color.blue + value);
-                    break;
-            }
-
-        }
-
         move() {
             if ((this.x + this.radius) >= this.drawboard.width) {
                 this.velocityX *= -1;
@@ -180,10 +153,51 @@ function drawCircles() {
         }
 
         animate() {
-            this.adjustColor();
+            this.color = adjustColor(this.color, 173, 255);
             this.move();
             this.draw();
         }
+
+    }
+
+    function adjustColor(color, minimumValue, maximumValue) {
+
+        function limit(value, minimum, maximum) {
+            if (value < minimum) {
+                return minimum;
+            } else if (value > maximum) {
+                return maximum;
+            } else {
+                return value;
+            }
+        }
+
+        const value = generateRandomInteger(0, 1) > 0 ? 1 : -1;
+        switch (generateRandomInteger(0, 3)) {
+            case 0:
+                color.red = limit(
+                    color.red + value,
+                    minimumValue,
+                    maximumValue
+                );
+                break;
+            case 1:
+                color.green = limit(
+                    color.green + value,
+                    minimumValue,
+                    maximumValue
+                );
+                break;
+            case 2:
+                color.blue = limit(
+                    color.blue + value,
+                    minimumValue,
+                    maximumValue
+                );
+                break;
+        }
+
+        return color;
 
     }
 
@@ -196,9 +210,7 @@ function drawCircles() {
         constructor(drawboard) {
             this.drawboard = drawboard;
             this.drawboardContext = drawboard.getContext('2d');
-            this.backgroundGradient = this.drawboardContext.createLinearGradient(0, 0, 0, drawboard.height);
-            this.backgroundGradient.addColorStop(0, 'lightslategray');
-            this.backgroundGradient.addColorStop(1, 'darkslategray');
+            this.backgroundColor = new Color(47, 79, 79, 1);
             this.circles = new Array();
             for (let index = 0; index < 9; index++) {
                 this.circles.push(Circle.generateRandomCircle(drawboard));
@@ -207,10 +219,14 @@ function drawCircles() {
             this.stopped = false;
             this.timeStamp = performance.now();
         }
-
+        
         execute(timeStamp) {
             
-            this.drawboardContext.fillStyle = this.backgroundGradient;
+            const backgroundGradient = this.drawboardContext.createLinearGradient(0, 0, 0, drawboard.height);
+            backgroundGradient.addColorStop(0, 'darkslategray');
+            this.backgroundColor = adjustColor(this.backgroundColor, 32, 96);
+            backgroundGradient.addColorStop(1, this.backgroundColor.rgba);
+            this.drawboardContext.fillStyle = backgroundGradient;
             this.drawboardContext.fillRect(0, 0, this.drawboard.width, this.drawboard.height);
 
             this.fpsCounter.draw(timeStamp);
