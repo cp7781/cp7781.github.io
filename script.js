@@ -220,7 +220,12 @@ function drawCircles() {
         constructor(drawboard) {
             this.drawboard = drawboard;
             this.drawboardContext = drawboard.getContext('2d');
-            this.backgroundColor = new Color(47, 79, 79, 1);
+            this.backgroundColor = new Color(
+                generateRandomInteger(32, 96),
+                generateRandomInteger(32, 96),
+                generateRandomInteger(32, 96),
+                1
+            );
             this.circles = new Array();
             for (let index = 0; index < 9; index++) {
                 this.circles.push(Circle.generateRandomCircle(drawboard));
@@ -232,7 +237,7 @@ function drawCircles() {
 
         execute(timeStamp) {
 
-            const backgroundGradient = this.drawboardContext.createLinearGradient(0, 0, 0, drawboard.height);
+            const backgroundGradient = this.drawboardContext.createLinearGradient(0, 0, this.drawboard.width, this.drawboard.height);
             backgroundGradient.addColorStop(0, 'darkslategray');
             this.backgroundColor = adjustColor(this.backgroundColor, 32, 96);
             backgroundGradient.addColorStop(1, this.backgroundColor.rgba);
