@@ -108,8 +108,8 @@ function drawCircles() {
             circle.radius = generateRandomInteger(minimumRadius, maximumRadius);
             circle.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
             circle.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
-            circle.velocityX = (Math.random() * .32 + .68) / drawboard.width * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
-            circle.velocityY = (Math.random() * .32 + .68) / drawboard.height * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityX = (Math.random() * .68 + .32) / drawboard.width * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityY = (Math.random() * .68 + .32) / drawboard.height * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.color = new Color(
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
@@ -143,8 +143,8 @@ function drawCircles() {
         }
 
         draw() {
-            const x = Math.round(this.x);
-            const y = Math.round(this.y);
+            const x = Math.floor(this.x);
+            const y = Math.floor(this.y);
             const drawboardContext = drawboard.getContext('2d');
             const gradient = drawboardContext.createRadialGradient(
                 x - this.radius * .32,
