@@ -108,8 +108,8 @@ function drawCircles() {
             circle.radius = generateRandomInteger(minimumRadius, maximumRadius);
             circle.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
             circle.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
-            circle.velocityX = (Math.random() * .68 + .32) * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
-            circle.velocityY = (Math.random() * .68 + .32) * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityX = (Math.random() * .68 + .32) * drawboard.width * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityY = (Math.random() * .68 + .32) * drawboard.height * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.color = new Color(
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
@@ -122,16 +122,10 @@ function drawCircles() {
         }
 
         move(timeStamp) {
-            if ((this.x + this.radius) >= this.drawboard.width) {
+            if ((this.x + this.radius) >= this.drawboard.width || (this.x - this.radius) <= 0) {
                 this.velocityX *= -1;
             }
-            if ((this.x - this.radius) <= 0) {
-                this.velocityX *= -1;
-            }
-            if ((this.y + this.radius) >= this.drawboard.height) {
-                this.velocityY *= -1;
-            }
-            if ((this.y - this.radius) <= 0) {
+            if ((this.y + this.radius) >= this.drawboard.height || (this.y - this.radius) <= 0) {
                 this.velocityY *= -1;
             }
             let timeDifference = timeStamp - this.lastTimeStamp;
@@ -143,8 +137,8 @@ function drawCircles() {
         }
 
         draw() {
-            const x = Math.floor(this.x);
-            const y = Math.floor(this.y);
+            const x = Math.round(this.x);
+            const y = Math.round(this.y);
             const drawboardContext = drawboard.getContext('2d');
             const gradient = drawboardContext.createRadialGradient(
                 x - this.radius * .32,
