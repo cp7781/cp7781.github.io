@@ -92,6 +92,7 @@ function drawCircles() {
             this.radius = 10;
             this.x = 10;
             this.y = 10;
+            this.lastTimeStamp = performance.now();
             this.velocityX = 1;
             this.velocityY = 1;
             this.color = new Color(255, 255, 255, 1);
@@ -101,33 +102,26 @@ function drawCircles() {
 
             const smallestSideLength = drawboard.width > drawboard.height ? drawboard.height : drawboard.width;
             const minimumRadius = Math.floor(smallestSideLength * .004);
-            const maximumRadius = Math.floor(smallestSideLength * .036);
+            const maximumRadius = Math.floor(smallestSideLength * .04);
 
-            const radius = generateRandomInteger(minimumRadius, maximumRadius);
-            const x = generateRandomInteger(radius, drawboard.width - radius);
-            const y = generateRandomInteger(radius, drawboard.height - radius);
-            const velocityX = generateRandomInteger(1, 3);
-            const velocityY = generateRandomInteger(1, 3);
-            const color = new Color(
+            const circle = new Circle(drawboard);
+            circle.radius = generateRandomInteger(minimumRadius, maximumRadius);
+            circle.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
+            circle.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
+            circle.velocityX = (Math.random() * .32 + .68) / drawboard.width * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityY = (Math.random() * .32 + .68) / drawboard.height * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.color = new Color(
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
                 .68
             );
 
-            const circle = new Circle(drawboard);
-            circle.radius = radius;
-            circle.x = x;
-            circle.y = y;
-            circle.velocityX = velocityX;
-            circle.velocityY = velocityY;
-            circle.color = color;
-
             return circle;
 
         }
 
-        move() {
+        move(timeStamp) {
             if ((this.x + this.radius) >= this.drawboard.width) {
                 this.velocityX *= -1;
             }
@@ -140,31 +134,37 @@ function drawCircles() {
             if ((this.y - this.radius) <= 0) {
                 this.velocityY *= -1;
             }
-            this.x += this.velocityX;
-            this.y += this.velocityY;
+            let timeDifference = timeStamp - this.lastTimeStamp;
+            this.lastTimeStamp = timeStamp;
+            if (timeDifference > 0) {
+                this.x += this.velocityX / timeDifference * 1000;
+                this.y += this.velocityY / timeDifference * 1000;
+            }
         }
 
         draw() {
+            const x = Math.round(this.x);
+            const y = Math.round(this.y);
             const drawboardContext = drawboard.getContext('2d');
             const gradient = drawboardContext.createRadialGradient(
-                this.x - this.radius * .32,
-                this.y - this.radius * .32,
+                x - this.radius * .32,
+                y - this.radius * .32,
                 this.radius,
-                this.x - this.radius,
-                this.y - this.radius,
+                x - this.radius,
+                y - this.radius,
                 this.radius
             );
             gradient.addColorStop(0, new Color(this.color.red, this.color.green, this.color.blue, .32).rgba);
             gradient.addColorStop(1, this.color.rgba);
             drawboardContext.fillStyle = gradient;
             drawboardContext.beginPath();
-            drawboardContext.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+            drawboardContext.arc(x, y, this.radius, 0, 2 * Math.PI);
             drawboardContext.fill();
         }
 
-        animate() {
+        animate(timeStamp) {
             this.color = adjustColor(this.color, 173, 255);
-            this.move();
+            this.move(timeStamp);
             this.draw();
         }
 
@@ -246,7 +246,7 @@ function drawCircles() {
 
             this.fpsCounter.draw(timeStamp);
 
-            this.circles.forEach(circle => circle.animate());
+            this.circles.forEach(circle => circle.animate(timeStamp));
             if (!this.stopped) {
                 requestAnimationFrame((timeStamp) => this.execute(timeStamp));
             }
