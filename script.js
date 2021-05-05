@@ -101,15 +101,15 @@ function drawCircles() {
         static generateRandomCircle(drawboard) {
 
             const smallestSideLength = drawboard.width > drawboard.height ? drawboard.height : drawboard.width;
-            const minimumRadius = Math.floor(smallestSideLength * .004);
+            const minimumRadius = Math.floor(smallestSideLength * .01);
             const maximumRadius = Math.floor(smallestSideLength * .04);
 
             const circle = new Circle(drawboard);
             circle.radius = generateRandomInteger(minimumRadius, maximumRadius);
             circle.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
             circle.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
-            circle.velocityX = (Math.random() * .68 + .32) / drawboard.width * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
-            circle.velocityY = (Math.random() * .68 + .32) / drawboard.height * 32 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityX = (Math.random() * .68 + .32) * smallestSideLength * .000032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityY = (Math.random() * .68 + .32) * smallestSideLength * .000032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.color = new Color(
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
