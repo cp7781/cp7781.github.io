@@ -108,8 +108,8 @@ function drawCircles() {
             circle.radius = generateRandomInteger(minimumRadius, maximumRadius);
             circle.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
             circle.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
-            circle.velocityX = (Math.random() * .68 + .32) * smallestSideLength * .000032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
-            circle.velocityY = (Math.random() * .68 + .32) * smallestSideLength * .000032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityX = (Math.random() * .68 + .32) * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocityY = (Math.random() * .68 + .32) * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.color = new Color(
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
@@ -137,8 +137,8 @@ function drawCircles() {
             let timeDifference = timeStamp - this.lastTimeStamp;
             this.lastTimeStamp = timeStamp;
             if (timeDifference > 0) {
-                this.x += this.velocityX / timeDifference * 1000;
-                this.y += this.velocityY / timeDifference * 1000;
+                this.x += this.velocityX * timeDifference;
+                this.y += this.velocityY * timeDifference;
             }
         }
 
