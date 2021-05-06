@@ -25,17 +25,31 @@ function drawCircles() {
             this._green = green;
             this._blue = blue;
             this._alpha = alpha;
+            this.limit = {
+                red: {
+                    minimum: 0,
+                    maximum: 255
+                },
+                green: {
+                    minimum: 0,
+                    maximum: 255
+                },
+                blue: {
+                    minimum: 0,
+                    maximum: 255
+                }
+            }
         }
 
         get rgba() {
-            return `rgba(${this._red}, ${this._green}, ${this._blue}, ${this._alpha})`;
+            return `rgba(${Math.round(this._red)}, ${Math.round(this._green)}, ${Math.round(this._blue)}, ${this._alpha})`;
         }
 
         set red(red) {
-            if (red < 0) {
-                red = 0;
-            } else if (red > 255) {
-                red = 255;
+            if (red < this.limit.red.minimum) {
+                red = this.limit.red.minimum;
+            } else if (red > this.limit.red.maximum) {
+                red = this.limit.red.maximum;
             }
             this._red = red;
         }
@@ -45,10 +59,10 @@ function drawCircles() {
         }
 
         set green(green) {
-            if (green < 0) {
-                green = 0;
-            } else if (green > 255) {
-                green = 255;
+            if (green < this.limit.green.minimum) {
+                green = this.limit.green.minimum;
+            } else if (green > this.limit.green.maximum) {
+                green = this.limit.green.maximum;
             }
             this._green = green;
         }
@@ -58,10 +72,10 @@ function drawCircles() {
         }
 
         set blue(blue) {
-            if (blue < 0) {
-                blue = 0;
-            } else if (blue > 255) {
-                blue = 255;
+            if (blue < this.limit.blue.minimum) {
+                blue = this.limit.blue.minimum;
+            } else if (blue > this.limit.blue.maximum) {
+                blue = this.limit.blue.maximum;
             }
             this._blue = blue;
         }
@@ -94,8 +108,8 @@ function drawCircles() {
                 x: 10,
                 y: 10
             }
-            this.lastTimeStamp = performance.now();
-            this.velocity = {
+            this.lastTimestamp = performance.now();
+            this.speed = {
                 x: 1,
                 y: 1
             }
@@ -112,8 +126,8 @@ function drawCircles() {
             circle.radius = generateRandomInteger(minimumRadius, maximumRadius);
             circle.coordinate.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
             circle.coordinate.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
-            circle.velocity.x = (Math.random() * .68 + .32) * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
-            circle.velocity.y = (Math.random() * .68 + .32) * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.speed.x = Math.random() * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.speed.y = Math.random() * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.color = new Color(
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
@@ -125,27 +139,27 @@ function drawCircles() {
 
         }
 
-        move(timeStamp) {
-            let timeDifference = timeStamp - this.lastTimeStamp;
-            this.lastTimeStamp = timeStamp;
+        move(timestamp) {
+            let timeDifference = timestamp - this.lastTimestamp;
+            this.lastTimestamp = timestamp;
             if (timeDifference > 0) {
-                this.coordinate.x += this.velocity.x * timeDifference;
-                this.coordinate.y += this.velocity.y * timeDifference;
+                this.coordinate.x += this.speed.x * timeDifference;
+                this.coordinate.y += this.speed.y * timeDifference;
             }
             if ((this.coordinate.x - this.radius) <= 0) {
-                this.velocity.x *= -1;
+                this.speed.x *= -1;
                 this.coordinate.x = this.radius;
             }
             if ((this.coordinate.y - this.radius) <= 0) {
-                this.velocity.y *= -1;
+                this.speed.y *= -1;
                 this.coordinate.y = this.radius;
             }
             if ((this.coordinate.x + this.radius) >= this.drawboard.width) {
-                this.velocity.x *= -1;
+                this.speed.x *= -1;
                 this.coordinate.x = this.drawboard.width - this.radius;
             }
             if ((this.coordinate.y + this.radius) >= this.drawboard.height) {
-                this.velocity.y *= -1;
+                this.speed.y *= -1;
                 this.coordinate.y = this.drawboard.height - this.radius;
             }
         }
@@ -170,9 +184,9 @@ function drawCircles() {
             drawboardContext.fill();
         }
 
-        animate(timeStamp) {
+        animate(timestamp) {
             this.color = adjustColor(this.color, 173, 255);
-            this.move(timeStamp);
+            this.move(timestamp);
             this.draw();
         }
 
@@ -226,38 +240,96 @@ function drawCircles() {
     class Animation {
 
         constructor(drawboard) {
+
             this.drawboard = drawboard;
-            this.drawboardContext = drawboard.getContext('2d');
-            this.backgroundColor = new Color(
-                generateRandomInteger(32, 96),
-                generateRandomInteger(32, 96),
-                generateRandomInteger(32, 96),
-                1
-            );
+
+            this.background = new Background(drawboard);
+
             this.circles = new Array();
             for (let index = 0; index < 9; index++) {
                 this.circles.push(Circle.generateRandomCircle(drawboard));
             }
+
             this.fpsCounter = new FPSCounter(drawboard);
+
             this.stopped = false;
-            this.timeStamp = performance.now();
+
         }
 
-        execute(timeStamp) {
+        execute(timestamp) {
 
-            const backgroundGradient = this.drawboardContext.createLinearGradient(0, 0, this.drawboard.width, this.drawboard.height);
-            backgroundGradient.addColorStop(0, 'darkslategray');
-            this.backgroundColor = adjustColor(this.backgroundColor, 32, 96);
-            backgroundGradient.addColorStop(1, this.backgroundColor.rgba);
-            this.drawboardContext.fillStyle = backgroundGradient;
-            this.drawboardContext.fillRect(0, 0, this.drawboard.width, this.drawboard.height);
+            this.background.draw(timestamp);
 
-            this.fpsCounter.draw(timeStamp);
+            this.fpsCounter.draw(timestamp);
 
-            this.circles.forEach(circle => circle.animate(timeStamp));
+            this.circles.forEach(circle => circle.animate(timestamp));
             if (!this.stopped) {
-                requestAnimationFrame((timeStamp) => this.execute(timeStamp));
+                requestAnimationFrame((timestamp) => this.execute(timestamp));
             }
+
+        }
+
+    }
+
+    class Background {
+
+        constructor(drawboard) {
+
+            this.drawboard = drawboard;
+
+            this.color = new Color(
+                generateRandomInteger(0, 47),
+                generateRandomInteger(0, 79),
+                generateRandomInteger(0, 79),
+                1
+            );
+            this.color.limit = {
+                red: {
+                    minimum: 0,
+                    maximum: 45
+                },
+                green: {
+                    minimum: 0,
+                    maximum: 79
+                },
+                blue: {
+                    minimum: 0,
+                    maximum: 79
+                }
+            }
+
+            this.speed = .001; // value change per millisecond
+
+            this.lastTimestamp = performance.now();
+
+        }
+
+        draw(timestamp) {
+
+            const timeDifference = timestamp - this.lastTimestamp;
+            if (timeDifference > 0) {
+                const value = (generateRandomInteger(0, 1) > 0 ? -1 : 1) * this.speed * timeDifference;
+                switch (generateRandomInteger(0, 2)) {
+                    case 0:
+                        this.color.red += value;
+                        break;
+                    case 1:
+                        this.color.green += value;
+                        break;
+                    case 2:
+                        this.color.blue += value;
+                        break;
+                }
+            }
+            this.lastTimestamp = timestamp;
+
+            const drawboardContext = drawboard.getContext('2d');
+            const backgroundGradient = drawboardContext.createLinearGradient(0, 0, this.drawboard.width, this.drawboard.height);
+            backgroundGradient.addColorStop(0, 'darkslategray');
+            this.color = adjustColor(this.color, 32, 96);
+            backgroundGradient.addColorStop(1, this.color.rgba);
+            drawboardContext.fillStyle = backgroundGradient;
+            drawboardContext.fillRect(0, 0, this.drawboard.width, this.drawboard.height);
 
         }
 
@@ -267,9 +339,8 @@ function drawCircles() {
 
         constructor(drawboard) {
             this.drawboard = drawboard;
-            this.drawboardContext = drawboard.getContext('2d');
             this.counter = new Array();
-            this.lastTimeStamp = performance.now();
+            this.lastTimestamp = performance.now();
             this.coordinate = {
                 x: 0,
                 y: 0
@@ -288,22 +359,27 @@ function drawCircles() {
 
         }
 
-        draw(timeStamp) {
-            const timeDifference = timeStamp - this.lastTimeStamp;
+        draw(timestamp) {
+
+            const timeDifference = timestamp - this.lastTimestamp;
             if (timeDifference > 0) {
                 this.counter.push({
-                    timeStamp: timeStamp,
+                    timestamp: timestamp,
                     fps: Math.round(1000 / timeDifference)
                 })
             }
-            this.lastTimeStamp = timeStamp;
-            this.counter = this.counter.filter(count => timeStamp - count.timeStamp < 1000);
+            this.lastTimestamp = timestamp;
+
+            this.counter = this.counter.filter(count => timestamp - count.timestamp < 1000);
             let averageFPS = 0;
             this.counter.forEach(count => averageFPS += count.fps);
             averageFPS = Math.round(averageFPS / this.counter.length);
-            this.drawboardContext.fillStyle = 'slategray';
-            this.drawboardContext.font = this.font;
-            this.drawboardContext.fillText(averageFPS + ' fps', this.coordinate.x, this.coordinate.y);
+
+            const drawboardContext = drawboard.getContext('2d');
+            drawboardContext.fillStyle = 'slategray';
+            drawboardContext.font = this.font;
+            drawboardContext.fillText(averageFPS + ' fps', this.coordinate.x, this.coordinate.y);
+
         }
 
     }
