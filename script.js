@@ -90,11 +90,15 @@ function drawCircles() {
         constructor(drawboard) {
             this.drawboard = drawboard;
             this.radius = 10;
-            this.x = 10;
-            this.y = 10;
+            this.coordinate = {
+                x: 10,
+                y: 10
+            }
             this.lastTimeStamp = performance.now();
-            this.velocityX = 1;
-            this.velocityY = 1;
+            this.velocity = {
+                x: 1,
+                y: 1
+            }
             this.color = new Color(255, 255, 255, 1);
         }
 
@@ -106,10 +110,10 @@ function drawCircles() {
 
             const circle = new Circle(drawboard);
             circle.radius = generateRandomInteger(minimumRadius, maximumRadius);
-            circle.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
-            circle.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
-            circle.velocityX = (Math.random() * .68 + .32) * smallestSideLength * .0002 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
-            circle.velocityY = (Math.random() * .68 + .32) * smallestSideLength * .0002 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.coordinate.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius);
+            circle.coordinate.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius);
+            circle.velocity.x = (Math.random() * .68 + .32) * smallestSideLength * .0002 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
+            circle.velocity.y = (Math.random() * .68 + .32) * smallestSideLength * .0002 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.color = new Color(
                 generateRandomInteger(173, 255),
                 generateRandomInteger(173, 255),
@@ -125,30 +129,30 @@ function drawCircles() {
             let timeDifference = timeStamp - this.lastTimeStamp;
             this.lastTimeStamp = timeStamp;
             if (timeDifference > 0) {
-                this.x += this.velocityX * timeDifference;
-                this.y += this.velocityY * timeDifference;
+                this.coordinate.x += this.velocity.x * timeDifference;
+                this.coordinate.y += this.velocity.y * timeDifference;
             }
-            if ((this.x - this.radius) <= 0) {
-                this.velocityX *= -1;
-                this.x = this.radius;
+            if ((this.coordinate.x - this.radius) <= 0) {
+                this.velocity.x *= -1;
+                this.coordinate.x = this.radius;
             }
-            if ((this.y - this.radius) <= 0) {
-                this.velocityY *= -1;
-                this.y = this.radius;
+            if ((this.coordinate.y - this.radius) <= 0) {
+                this.velocity.y *= -1;
+                this.coordinate.y = this.radius;
             }
-            if ((this.x + this.radius) >= this.drawboard.width) {
-                this.velocityX *= -1;
-                this.x = this.drawboard.width - this.radius;
+            if ((this.coordinate.x + this.radius) >= this.drawboard.width) {
+                this.velocity.x *= -1;
+                this.coordinate.x = this.drawboard.width - this.radius;
             }
-            if ((this.y + this.radius) >= this.drawboard.height) {
-                this.velocityY *= -1;
-                this.y = this.drawboard.height - this.radius;
+            if ((this.coordinate.y + this.radius) >= this.drawboard.height) {
+                this.velocity.y *= -1;
+                this.coordinate.y = this.drawboard.height - this.radius;
             }
         }
 
         draw() {
-            const x = Math.round(this.x);
-            const y = Math.round(this.y);
+            const x = Math.round(this.coordinate.x);
+            const y = Math.round(this.coordinate.y);
             const drawboardContext = drawboard.getContext('2d');
             const gradient = drawboardContext.createRadialGradient(
                 x - this.radius * .32,
@@ -266,15 +270,19 @@ function drawCircles() {
             this.drawboardContext = drawboard.getContext('2d');
             this.counter = new Array();
             this.lastTimeStamp = performance.now();
+            this.coordinate = {
+                x: 0,
+                y: 0
+            };
 
             const font = `'Source Sans Pro'`;
             if (drawboard.width > drawboard.height) {
-                this.x = Math.round(drawboard.height * .01);
-                this.y = drawboard.height - this.x;
+                this.coordinate.x = Math.round(drawboard.height * .01);
+                this.coordinate.y = drawboard.height - this.coordinate.x;
                 this.font = Math.round(drawboard.height * .015) + 'px ' + font;
             } else {
-                this.x = Math.round(drawboard.width * .01);
-                this.y = drawboard.height - this.x;
+                this.coordinate.x = Math.round(drawboard.width * .01);
+                this.coordinate.y = drawboard.height - this.coordinate.x;
                 this.font = Math.round(drawboard.width * .015) + 'px ' + font;
             }
 
@@ -295,7 +303,7 @@ function drawCircles() {
             averageFPS = Math.round(averageFPS / this.counter.length);
             this.drawboardContext.fillStyle = 'slategray';
             this.drawboardContext.font = this.font;
-            this.drawboardContext.fillText(averageFPS + ' fps', this.x, this.y);
+            this.drawboardContext.fillText(averageFPS + ' fps', this.coordinate.x, this.coordinate.y);
         }
 
     }
