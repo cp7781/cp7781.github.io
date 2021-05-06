@@ -278,23 +278,23 @@ function drawCircles() {
             this.drawboard = drawboard;
 
             this.color = new Color(
-                generateRandomInteger(0, 47),
-                generateRandomInteger(0, 79),
-                generateRandomInteger(0, 79),
+                generateRandomInteger(47, 128),
+                generateRandomInteger(79, 128),
+                generateRandomInteger(79, 128),
                 1
             );
             this.color.limit = {
                 red: {
-                    minimum: 0,
-                    maximum: 45
+                    minimum: 45,
+                    maximum: 128
                 },
                 green: {
-                    minimum: 0,
-                    maximum: 79
+                    minimum: 79,
+                    maximum: 128
                 },
                 blue: {
-                    minimum: 0,
-                    maximum: 79
+                    minimum: 79,
+                    maximum: 128
                 }
             }
 
