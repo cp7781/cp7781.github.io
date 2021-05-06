@@ -122,17 +122,27 @@ function drawCircles() {
         }
 
         move(timeStamp) {
-            if ((this.x + this.radius) >= this.drawboard.width || (this.x - this.radius) <= 0) {
-                this.velocityX *= -1;
-            }
-            if ((this.y + this.radius) >= this.drawboard.height || (this.y - this.radius) <= 0) {
-                this.velocityY *= -1;
-            }
             let timeDifference = timeStamp - this.lastTimeStamp;
             this.lastTimeStamp = timeStamp;
             if (timeDifference > 0) {
                 this.x += this.velocityX * timeDifference;
                 this.y += this.velocityY * timeDifference;
+            }
+            if ((this.x - this.radius) <= 0) {
+                this.velocityX *= -1;
+                this.x = this.radius;
+            }
+            if ((this.y - this.radius) <= 0) {
+                this.velocityY *= -1;
+                this.y = this.radius;
+            }
+            if ((this.x + this.radius) >= this.drawboard.width) {
+                this.velocityX *= -1;
+                this.x = this.drawboard.width - this.radius;
+            }
+            if ((this.y + this.radius) >= this.drawboard.height) {
+                this.velocityY *= -1;
+                this.y = this.drawboard.height - this.radius;
             }
         }
 
