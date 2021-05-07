@@ -114,6 +114,8 @@ function drawCircles() {
                 y: 1
             }
             this.color = new Color(255, 255, 255, 1);
+            this.colorChangeSpeed = .1; // value change per millisecond
+            this.lastTimestamp = performance.now();
         }
 
         static generateRandomCircle(drawboard) {
@@ -129,23 +131,75 @@ function drawCircles() {
             circle.speed.x = Math.random() * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.speed.y = Math.random() * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1);
             circle.color = new Color(
-                generateRandomInteger(173, 255),
-                generateRandomInteger(173, 255),
-                generateRandomInteger(173, 255),
-                .68
+                generateRandomInteger(82, 255),
+                generateRandomInteger(82, 255),
+                generateRandomInteger(82, 255),
+                1
             );
+            circle.color.limit = {
+                red: {
+                    minimum: 82,
+                    maximum: 173
+                },
+                green: {
+                    minimum: 82,
+                    maximum: 173
+                },
+                blue: {
+                    minimum: 82,
+                    maximum: 173
+                }
+            }
+            switch (generateRandomInteger(0, 2)) {
+                case 0:
+                    circle.color.limit.red = {
+                        minimum: 173,
+                        maximum: 255
+                    }
+                    break;
+                case 1:
+                    circle.color.limit.green = {
+                        minimum: 173,
+                        maximum: 255
+                    }
+                    break;
+                case 2:
+                    circle.color.limit.blue = {
+                        minimum: 173,
+                        maximum: 255
+                    }
+                    break;
+            }
 
             return circle;
 
         }
 
-        move(timestamp) {
+        draw(timestamp) {
+
             let timeDifference = timestamp - this.lastTimestamp;
             this.lastTimestamp = timestamp;
+
             if (timeDifference > 0) {
+
                 this.coordinate.x += this.speed.x * timeDifference;
                 this.coordinate.y += this.speed.y * timeDifference;
+
+                const colorChangeValue = (generateRandomInteger(0, 1) > 0 ? -1 : 1) * this.colorChangeSpeed * timeDifference;
+                switch (generateRandomInteger(0, 2)) {
+                    case 0:
+                        this.color.red += colorChangeValue;
+                        break;
+                    case 1:
+                        this.color.green += colorChangeValue;
+                        break;
+                    case 2:
+                        this.color.blue += colorChangeValue;
+                        break;
+                }
+
             }
+
             if ((this.coordinate.x - this.radius) <= 0) {
                 this.speed.x *= -1;
                 this.coordinate.x = this.radius;
@@ -162,74 +216,33 @@ function drawCircles() {
                 this.speed.y *= -1;
                 this.coordinate.y = this.drawboard.height - this.radius;
             }
-        }
 
-        draw() {
-            const x = Math.round(this.coordinate.x);
-            const y = Math.round(this.coordinate.y);
-            const drawboardContext = drawboard.getContext('2d');
-            const gradient = drawboardContext.createRadialGradient(
-                x - this.radius * .32,
-                y - this.radius * .32,
-                this.radius,
-                x - this.radius,
-                y - this.radius,
-                this.radius
-            );
-            gradient.addColorStop(0, new Color(this.color.red, this.color.green, this.color.blue, .32).rgba);
-            gradient.addColorStop(1, this.color.rgba);
-            drawboardContext.fillStyle = gradient;
-            drawboardContext.beginPath();
-            drawboardContext.arc(x, y, this.radius, 0, 2 * Math.PI);
-            drawboardContext.fill();
-        }
-
-        animate(timestamp) {
-            this.color = adjustColor(this.color, 173, 255);
-            this.move(timestamp);
-            this.draw();
-        }
-
-    }
-
-    function adjustColor(color, minimumValue, maximumValue) {
-
-        function limit(value, minimum, maximum) {
-            if (value < minimum) {
-                return minimum;
-            } else if (value > maximum) {
-                return maximum;
-            } else {
-                return value;
+            {
+                const x = Math.round(this.coordinate.x);
+                const y = Math.round(this.coordinate.y);
+                const drawboardContext = drawboard.getContext('2d');
+                const gradient = drawboardContext.createRadialGradient(
+                    x - this.radius * .32,
+                    y - this.radius * .32,
+                    this.radius,
+                    x - this.radius,
+                    y - this.radius,
+                    this.radius
+                );
+                gradient.addColorStop(0, new Color(
+                    this.color.red,
+                    this.color.green,
+                    this.color.blue,
+                    .32
+                ).rgba);
+                gradient.addColorStop(1, this.color.rgba);
+                drawboardContext.fillStyle = gradient;
+                drawboardContext.beginPath();
+                drawboardContext.arc(x, y, this.radius, 0, 2 * Math.PI);
+                drawboardContext.fill();
             }
-        }
 
-        const value = generateRandomInteger(0, 1) > 0 ? 1 : -1;
-        switch (generateRandomInteger(0, 3)) {
-            case 0:
-                color.red = limit(
-                    color.red + value,
-                    minimumValue,
-                    maximumValue
-                );
-                break;
-            case 1:
-                color.green = limit(
-                    color.green + value,
-                    minimumValue,
-                    maximumValue
-                );
-                break;
-            case 2:
-                color.blue = limit(
-                    color.blue + value,
-                    minimumValue,
-                    maximumValue
-                );
-                break;
         }
-
-        return color;
 
     }
 
@@ -262,7 +275,7 @@ function drawCircles() {
 
             this.fpsCounter.draw(timestamp);
 
-            this.circles.forEach(circle => circle.animate(timestamp));
+            this.circles.forEach(circle => circle.draw(timestamp));
             if (!this.stopped) {
                 requestAnimationFrame((timestamp) => this.execute(timestamp));
             }
@@ -286,19 +299,19 @@ function drawCircles() {
             this.color.limit = {
                 red: {
                     minimum: 0,
-                    maximum: 128
+                    maximum: 173
                 },
                 green: {
                     minimum: 0,
-                    maximum: 128
+                    maximum: 173
                 },
                 blue: {
                     minimum: 0,
-                    maximum: 128
+                    maximum: 173
                 }
             }
 
-            this.speed = .001; // value change per millisecond
+            this.speed = .1; // value change per millisecond
 
             this.lastTimestamp = performance.now();
 
@@ -307,6 +320,8 @@ function drawCircles() {
         draw(timestamp) {
 
             const timeDifference = timestamp - this.lastTimestamp;
+            this.lastTimestamp = timestamp;
+
             if (timeDifference > 0) {
                 const value = (generateRandomInteger(0, 1) > 0 ? -1 : 1) * this.speed * timeDifference;
                 switch (generateRandomInteger(0, 2)) {
@@ -321,12 +336,10 @@ function drawCircles() {
                         break;
                 }
             }
-            this.lastTimestamp = timestamp;
 
             const drawboardContext = drawboard.getContext('2d');
             const backgroundGradient = drawboardContext.createLinearGradient(0, 0, this.drawboard.width, this.drawboard.height);
             backgroundGradient.addColorStop(0, 'darkslategray');
-            this.color = adjustColor(this.color, 32, 96);
             backgroundGradient.addColorStop(1, this.color.rgba);
             drawboardContext.fillStyle = backgroundGradient;
             drawboardContext.fillRect(0, 0, this.drawboard.width, this.drawboard.height);
