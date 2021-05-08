@@ -134,7 +134,7 @@ function drawCircles() {
                 generateRandomInteger(82, 255),
                 generateRandomInteger(82, 255),
                 generateRandomInteger(82, 255),
-                1
+                .68
             );
             circle.color.limit = {
                 red: {
@@ -230,10 +230,10 @@ function drawCircles() {
                     this.radius
                 );
                 gradient.addColorStop(0, new Color(
-                    this.color.red,
-                    this.color.green,
-                    this.color.blue,
-                    .32
+                    this.color.red * .68,
+                    this.color.green * .68,
+                    this.color.blue * .68,
+                    .68
                 ).rgba);
                 gradient.addColorStop(1, this.color.rgba);
                 drawboardContext.fillStyle = gradient;
