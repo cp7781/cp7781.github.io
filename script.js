@@ -266,6 +266,15 @@ function drawCircles() {
             this.fpsCounter = new FPSCounter(drawboard);
 
             this.stopped = false;
+            window.addEventListener('resize', event => {
+                this.stopped = true;
+                drawCircles();
+            });
+
+            this.showFPS = false;
+            window.addEventListener('click', event => {
+                this.showFPS = !this.showFPS;
+            });
 
         }
 
@@ -273,11 +282,13 @@ function drawCircles() {
 
             this.background.draw(timestamp);
 
-            this.fpsCounter.draw(timestamp);
-
             this.circles.forEach(circle => circle.draw(timestamp));
             if (!this.stopped) {
                 requestAnimationFrame((timestamp) => this.execute(timestamp));
+            }
+
+            if (this.showFPS) {
+                this.fpsCounter.draw(timestamp);
             }
 
         }
@@ -362,11 +373,11 @@ function drawCircles() {
             const font = `'Source Sans Pro'`;
             if (drawboard.width > drawboard.height) {
                 this.coordinate.x = Math.round(drawboard.height * .01);
-                this.coordinate.y = drawboard.height - this.coordinate.x;
+                this.coordinate.y = drawboard.height - this.coordinate.x * 1.3;
                 this.font = Math.round(drawboard.height * .015) + 'px ' + font;
             } else {
                 this.coordinate.x = Math.round(drawboard.width * .01);
-                this.coordinate.y = drawboard.height - this.coordinate.x;
+                this.coordinate.y = drawboard.height - this.coordinate.x * 1.3;
                 this.font = Math.round(drawboard.width * .015) + 'px ' + font;
             }
 
@@ -389,7 +400,7 @@ function drawCircles() {
             averageFPS = Math.round(averageFPS / this.counter.length);
 
             const drawboardContext = drawboard.getContext('2d');
-            drawboardContext.fillStyle = 'slategray';
+            drawboardContext.fillStyle = 'seashell';
             drawboardContext.font = this.font;
             drawboardContext.fillText(averageFPS + ' fps', this.coordinate.x, this.coordinate.y);
 
@@ -405,11 +416,6 @@ function drawCircles() {
 
         const animation = new Animation(drawboard);
         animation.execute();
-
-        window.onresize = () => {
-            animation.stopped = true;
-            drawCircles();
-        };
 
     }
 
