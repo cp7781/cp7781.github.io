@@ -252,9 +252,11 @@ function drawCircles() {
 
     class Animation {
 
-        constructor(drawboard) {
+        constructor() {
 
-            this.drawboard = drawboard;
+            this.drawboard = document.getElementById('drawboard');
+            this.drawboard.width = window.innerWidth;
+            this.drawboard.height = window.innerHeight;
 
             this.background = new Background(drawboard);
 
@@ -408,15 +410,6 @@ function drawCircles() {
 
     }
 
-    {
-
-        const drawboard = document.getElementById('drawboard');
-        drawboard.width = window.innerWidth;
-        drawboard.height = window.innerHeight;
-
-        const animation = new Animation(drawboard);
-        animation.execute();
-
-    }
+    (new Animation()).execute();
 
 }
