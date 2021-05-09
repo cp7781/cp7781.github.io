@@ -264,6 +264,15 @@ function drawCircles() {
             for (let index = 0; index < 9; index++) {
                 this.circles.push(Circle.generateRandomCircle(drawboard));
             }
+            this.circles.sort((circle1, circle2) => {
+                if (circle1.radius > circle2.radius) {
+                    return -1;
+                } else if (circle1.radius < circle2.radius) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
 
             this.fpsCounter = new FPSCounter(drawboard);
 
