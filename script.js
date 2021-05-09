@@ -298,8 +298,6 @@ function drawCircles() {
 
             if (!this.stopped) {
                 requestAnimationFrame(timestamp => this.execute(timestamp));
-            } else {
-                console.log('stopped')
             }
 
         }
