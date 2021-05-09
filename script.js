@@ -282,7 +282,7 @@ function drawCircles() {
 
             this.stopped = false;
 
-            this.showFPS = false;
+            this.fps = false;
 
         }
 
