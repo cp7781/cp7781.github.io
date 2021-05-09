@@ -262,11 +262,23 @@ function drawCircles() {
 
             this.drawboard = drawboard;
 
-            this.background = new Background(drawboard);
+            this.change();
+            
+            this.fpsCounter = new FPSCounter(drawboard);
+
+            this.stopped = false;
+
+            this.fps = false;
+
+        }
+
+        change() {
+            
+            this.background = new Background(this.drawboard);
 
             this.circles = new Array();
             for (let index = 0; index < 9; index++) {
-                this.circles.push(Circle.generateRandomCircle(drawboard));
+                this.circles.push(Circle.generateRandomCircle(this.drawboard));
             }
             this.circles.sort((circle1, circle2) => {
                 if (circle1.radius > circle2.radius) {
@@ -277,13 +289,7 @@ function drawCircles() {
                     return 0;
                 }
             });
-
-            this.fpsCounter = new FPSCounter(drawboard);
-
-            this.stopped = false;
-
-            this.fps = false;
-
+            
         }
 
         execute(timestamp) {
@@ -448,10 +454,10 @@ function drawCircles() {
 
         window.addEventListener('click', event => {
             /**
-             * bottom left corner
+             * top left corner
              */
-            if (event.x <= .32 * window.innerWidth && event.y >= .68 * window.innerHeight) {
-                animation.fps = !animation.fps;
+            if (event.x <= 0.32 * window.innerWidth && event.y <= .32 * window.innerHeight) {
+                animation.change();
             }
             /**
              * top right corner
@@ -462,6 +468,12 @@ function drawCircles() {
                 } else {
                     drawboard.requestFullscreen().catch(error => { });
                 }
+            }
+            /**
+             * bottom left corner
+             */
+            if (event.x <= .32 * window.innerWidth && event.y >= .68 * window.innerHeight) {
+                animation.fps = !animation.fps;
             }
         });
 
