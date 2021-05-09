@@ -1,5 +1,5 @@
 function execute() {
-    
+
     changeMessage();
     drawCircles();
 
@@ -447,8 +447,21 @@ function drawCircles() {
         });
 
         window.addEventListener('click', event => {
+            /**
+             * bottom left corner
+             */
             if (event.x <= .32 * window.innerWidth && event.y >= .68 * window.innerHeight) {
                 animation.fps = !animation.fps;
+            }
+            /**
+             * top right corner
+             */
+            if (event.x >= 0.68 * window.innerWidth && event.y <= .32 * window.innerHeight) {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen().catch(error => { });
+                } else {
+                    drawboard.requestFullscreen().catch(error => { });
+                }
             }
         });
 
