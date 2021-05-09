@@ -447,7 +447,9 @@ function drawCircles() {
         });
 
         window.addEventListener('click', event => {
-            animation.fps = !animation.fps;
+            if (event.x <= .32 * window.innerWidth && event.y >= .68 * window.innerHeight) {
+                animation.fps = !animation.fps;
+            }
         });
 
     }
