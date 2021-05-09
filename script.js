@@ -1,6 +1,12 @@
 function execute() {
+    
     changeMessage();
     drawCircles();
+
+    window.addEventListener('resize', event => {
+        drawCircles();
+    });
+
 }
 
 function changeMessage() {
@@ -252,11 +258,9 @@ function drawCircles() {
 
     class Animation {
 
-        constructor() {
+        constructor(drawboard) {
 
-            this.drawboard = document.getElementById('drawboard');
-            this.drawboard.width = window.innerWidth;
-            this.drawboard.height = window.innerHeight;
+            this.drawboard = drawboard;
 
             this.background = new Background(drawboard);
 
@@ -277,15 +281,8 @@ function drawCircles() {
             this.fpsCounter = new FPSCounter(drawboard);
 
             this.stopped = false;
-            window.addEventListener('resize', event => {
-                this.stopped = true;
-                drawCircles();
-            });
 
             this.showFPS = false;
-            window.addEventListener('click', event => {
-                this.showFPS = !this.showFPS;
-            });
 
         }
 
@@ -294,14 +291,33 @@ function drawCircles() {
             this.background.draw(timestamp);
 
             this.circles.forEach(circle => circle.draw(timestamp));
-            if (!this.stopped) {
-                requestAnimationFrame((timestamp) => this.execute(timestamp));
-            }
 
-            if (this.showFPS) {
+            if (this.fps) {
                 this.fpsCounter.draw(timestamp);
             }
 
+            if (!this.stopped) {
+                requestAnimationFrame(timestamp => this.execute(timestamp));
+            } else {
+                console.log('stopped')
+            }
+
+        }
+
+        set stopped(stopped) {
+            this._stopped = stopped;
+        }
+
+        get stopped() {
+            return this._stopped;
+        }
+
+        set fps(fps) {
+            this._fps = fps;
+        }
+
+        get fps() {
+            return this._fps;
         }
 
     }
@@ -419,6 +435,23 @@ function drawCircles() {
 
     }
 
-    (new Animation()).execute();
+    {
+
+        const drawboard = document.getElementById('drawboard');
+        drawboard.width = window.innerWidth;
+        drawboard.height = window.innerHeight;
+
+        const animation = new Animation(drawboard);
+        animation.execute();
+
+        window.addEventListener('resize', event => {
+            animation.stopped = true;
+        });
+
+        window.addEventListener('click', event => {
+            animation.fps = !animation.fps;
+        });
+
+    }
 
 }
