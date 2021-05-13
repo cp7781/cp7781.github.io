@@ -3,10 +3,6 @@ window.addEventListener('load', event => {
     changeMessage();
     drawCircles();
 
-    window.addEventListener('resize', event => {
-        drawCircles();
-    });
-
 });
 
 function changeMessage() {
@@ -302,18 +298,8 @@ function drawCircles() {
                 this.fpsCounter.draw(timestamp);
             }
 
-            if (!this.stopped) {
-                requestAnimationFrame(timestamp => this.execute(timestamp));
-            }
+            requestAnimationFrame(timestamp => this.execute(timestamp));
 
-        }
-
-        set stopped(stopped) {
-            this._stopped = stopped;
-        }
-
-        get stopped() {
-            return this._stopped;
         }
 
         set fps(fps) {
@@ -441,6 +427,7 @@ function drawCircles() {
 
     {
 
+
         const drawboard = document.getElementById('drawboard');
         drawboard.width = window.innerWidth;
         drawboard.height = window.innerHeight;
@@ -449,7 +436,9 @@ function drawCircles() {
         animation.execute();
 
         window.addEventListener('resize', event => {
-            animation.stopped = true;
+            drawboard.width = window.innerWidth;
+            drawboard.height = window.innerHeight;
+            animation.change();
         });
 
         window.addEventListener('keydown', event => {
@@ -462,12 +451,12 @@ function drawCircles() {
                     break;
                 case 'v':
                     if (document.fullscreenElement) {
-                        document.exitFullscreen().catch(error => console.error(error));
+                        document.exitFullscreen().catch(error => { console.error(error) });
                     } else {
-                        document.querySelector('#drawboard').requestFullscreen().catch(error => console.error(error));
+                        document.querySelector('#drawboard').requestFullscreen().catch(error => { console.error(error) });
                     }
                     break;
-            }
+            };
         });
 
     }
