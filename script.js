@@ -427,7 +427,6 @@ function drawCircles() {
 
     {
 
-
         const drawboard = document.getElementById('drawboard');
         drawboard.width = window.innerWidth;
         drawboard.height = window.innerHeight;
