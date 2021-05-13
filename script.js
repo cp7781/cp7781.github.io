@@ -1,8 +1,6 @@
 window.addEventListener('load', event => {
-
     changeMessage();
     drawCircles();
-
 });
 
 function changeMessage() {
@@ -255,23 +253,14 @@ function drawCircles() {
     class Animation {
 
         constructor(drawboard) {
-
             this.drawboard = drawboard;
-
             this.change();
-
             this.fpsCounter = new FPSCounter(drawboard);
-
-            this.stopped = false;
-
             this.fps = false;
-
         }
 
         change() {
-
             this.background = new Background(this.drawboard);
-
             this.circles = new Array();
             for (let index = 0; index < 9; index++) {
                 this.circles.push(Circle.generateRandomCircle(this.drawboard));
@@ -285,21 +274,15 @@ function drawCircles() {
                     return 0;
                 }
             });
-
         }
 
         execute(timestamp) {
-
             this.background.draw(timestamp);
-
             this.circles.forEach(circle => circle.draw(timestamp));
-
             if (this.fps) {
                 this.fpsCounter.draw(timestamp);
             }
-
             requestAnimationFrame(timestamp => this.execute(timestamp));
-
         }
 
         set fps(fps) {
@@ -382,22 +365,6 @@ function drawCircles() {
             this.drawboard = drawboard;
             this.counter = new Array();
             this.lastTimestamp = performance.now();
-            this.coordinate = {
-                x: 0,
-                y: 0
-            };
-
-            const font = `'Source Sans Pro'`;
-            if (drawboard.width > drawboard.height) {
-                this.coordinate.x = Math.round(drawboard.height * .01);
-                this.coordinate.y = drawboard.height - this.coordinate.x * 1.3;
-                this.font = Math.round(drawboard.height * .015) + 'px ' + font;
-            } else {
-                this.coordinate.x = Math.round(drawboard.width * .01);
-                this.coordinate.y = drawboard.height - this.coordinate.x * 1.3;
-                this.font = Math.round(drawboard.width * .015) + 'px ' + font;
-            }
-
         }
 
         draw(timestamp) {
@@ -416,10 +383,25 @@ function drawCircles() {
             this.counter.forEach(count => averageFPS += count.fps);
             averageFPS = Math.round(averageFPS / this.counter.length);
 
+            const coordinate = {
+                x: 0,
+                y: 0
+            }
+            let font = `'Source Sans Pro'`;
+            if (drawboard.width > drawboard.height) {
+                coordinate.x = Math.round(drawboard.height * .01);
+                coordinate.y = drawboard.height - coordinate.x * 1.3;
+                font = `${Math.round(drawboard.height * .015)}px ${font}`;
+            } else {
+                coordinate.x = Math.round(drawboard.width * .01);
+                coordinate.y = drawboard.height - coordinate.x * 1.3;
+                font = `${Math.round(drawboard.width * .015)}px ${font}`;
+            }
+
             const drawboardContext = drawboard.getContext('2d');
             drawboardContext.fillStyle = 'seashell';
-            drawboardContext.font = this.font;
-            drawboardContext.fillText(averageFPS + ' fps', this.coordinate.x, this.coordinate.y);
+            drawboardContext.font = font;
+            drawboardContext.fillText(`${averageFPS} fps`, coordinate.x, coordinate.y);
 
         }
 
