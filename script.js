@@ -1,4 +1,4 @@
-function execute() {
+window.addEventListener('load', event => {
 
     changeMessage();
     drawCircles();
@@ -7,7 +7,7 @@ function execute() {
         drawCircles();
     });
 
-}
+});
 
 function changeMessage() {
     const timeout = 79;
@@ -263,7 +263,7 @@ function drawCircles() {
             this.drawboard = drawboard;
 
             this.change();
-            
+
             this.fpsCounter = new FPSCounter(drawboard);
 
             this.stopped = false;
@@ -273,7 +273,7 @@ function drawCircles() {
         }
 
         change() {
-            
+
             this.background = new Background(this.drawboard);
 
             this.circles = new Array();
@@ -289,7 +289,7 @@ function drawCircles() {
                     return 0;
                 }
             });
-            
+
         }
 
         execute(timestamp) {
@@ -452,28 +452,21 @@ function drawCircles() {
             animation.stopped = true;
         });
 
-        window.addEventListener('click', event => {
-            /**
-             * top left corner
-             */
-            if (event.x <= 0.32 * window.innerWidth && event.y <= .32 * window.innerHeight) {
-                animation.change();
-            }
-            /**
-             * top right corner
-             */
-            if (event.x >= 0.68 * window.innerWidth && event.y <= .32 * window.innerHeight) {
-                if (document.fullscreenElement) {
-                    document.exitFullscreen().catch(error => { });
-                } else {
-                    drawboard.requestFullscreen().catch(error => { });
-                }
-            }
-            /**
-             * bottom left corner
-             */
-            if (event.x <= .32 * window.innerWidth && event.y >= .68 * window.innerHeight) {
-                animation.fps = !animation.fps;
+        window.addEventListener('keydown', event => {
+            switch (event.key) {
+                case 'c':
+                    animation.change();
+                    break;
+                case 'f':
+                    animation.fps = !animation.fps;
+                    break;
+                case 'v':
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen().catch(error => console.error(error));
+                    } else {
+                        document.querySelector('body').requestFullscreen().catch(error => console.error(error));
+                    }
+                    break;
             }
         });
 
