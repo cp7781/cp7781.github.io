@@ -464,7 +464,7 @@ function drawCircles() {
                     if (document.fullscreenElement) {
                         document.exitFullscreen().catch(error => console.error(error));
                     } else {
-                        document.querySelector('body').requestFullscreen().catch(error => console.error(error));
+                        document.querySelector('#drawboard').requestFullscreen().catch(error => console.error(error));
                     }
                     break;
             }
