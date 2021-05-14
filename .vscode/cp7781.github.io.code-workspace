@@ -13,11 +13,11 @@
 		"version": "0.2.0",
 		"configurations": [
 			{
-				"type": "pwa-chrome",
+				"type": "firefox",
 				"request": "launch",
-				"name": "Chrome",
-				"url": "${workspaceFolder}/index.html",
-				"webRoot": "${workspaceFolder}"
+				"reAttach": true,
+				"name": "Firefox",
+				"file": "${workspaceFolder}/index.html"
 			}
 		]
 	}
