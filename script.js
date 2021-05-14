@@ -446,9 +446,9 @@ function drawCircles() {
                 y: event.y / window.innerHeight
             }
             if (position.x < .32 && position.y > .68) {
-                animation.fps = !animation.fps;
+                animation.fps = !animation.fps
             } else if (position.x > .68 && position.y < .32) {
-                animation.change();
+                animation.change()
             }
         });
 
