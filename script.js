@@ -1,7 +1,7 @@
 import changeMessage from './modules/changeMessage.mjs'
-import drawCircles from './modules/drawCircles.mjs'
+import drawBackground from './modules/drawBackground.mjs'
 
 window.addEventListener('load', event => {
     changeMessage()
-    drawCircles()
+    drawBackground()
 })
