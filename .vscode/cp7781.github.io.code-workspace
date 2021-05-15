@@ -15,7 +15,6 @@
 			{
 				"type": "firefox",
 				"request": "launch",
-				"reAttach": true,
 				"name": "Firefox",
 				"file": "${workspaceFolder}/index.html"
 			}
