@@ -1,6 +1,6 @@
 import Matter from 'https://cdn.skypack.dev/matter-js'
 
-export function test() {
+export default function () {
     let Engine = Matter.Engine,
         Render = Matter.Render,
         World = Matter.World,

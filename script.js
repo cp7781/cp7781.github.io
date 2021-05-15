@@ -1,9 +1,9 @@
-import * as Message from './modules/changeMessage.mjs'
-import * as Circles from './modules/drawCircles.mjs'
-import * as Test from './modules/test.mjs'
+import changeMessage from './modules/changeMessage.mjs'
+import drawCircles from './modules/drawCircles.mjs'
+import testPhysics from './modules/testPhysics.mjs'
 
 window.addEventListener('load', event => {
-    Message.change()
-    Circles.draw()
-    Test.test()
+    changeMessage()
+    drawCircles()
+    testPhysics()
 })
