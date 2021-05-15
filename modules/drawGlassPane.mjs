@@ -10,7 +10,7 @@ export default function () {
         }
     }
 
-    class Field {
+    class Symbol {
 
         constructor(canvas) {
             this.canvas = canvas
@@ -62,8 +62,8 @@ export default function () {
         const context = canvas.getContext('2d')
         context.clearRect(0, 0, canvas.width, canvas.height)
 
-        const field = new Field(canvas)
-        field.draw()
+        const symbol = new Symbol(canvas)
+        symbol.draw()
 
     }
 
