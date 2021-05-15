@@ -14,9 +14,9 @@ export default function () {
         }
     });
 
-    const boxA = Matter.Bodies.rectangle(400, 200, 80, 80);
-    const ballA = Matter.Bodies.circle(380, 100, 40, 10);
-    const ballB = Matter.Bodies.circle(460, 10, 40, 10);
+    const boxA = Matter.Bodies.rectangle(400, 200, 40, 40);
+    const ballA = Matter.Bodies.circle(380, 100, 40);
+    const ballB = Matter.Bodies.circle(460, 10, 10);
     const ground = Matter.Bodies.rectangle(300, 290, 400, 10, { isStatic: true });
 
     Matter.World.add(engine.world, [boxA, ballA, ballB, ground]);
