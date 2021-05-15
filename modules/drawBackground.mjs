@@ -200,15 +200,13 @@ export default function () {
             }
 
             {
-                const x = Math.round(this.coordinate.x)
-                const y = Math.round(this.coordinate.y)
                 const context = this.canvas.getContext('2d')
                 const gradient = context.createRadialGradient(
-                    x - this.radius * .32,
-                    y - this.radius * .32,
+                    this.coordinate.x - this.radius * .32,
+                    this.coordinate.y - this.radius * .32,
                     this.radius,
-                    x - this.radius,
-                    y - this.radius,
+                    this.coordinate.x - this.radius,
+                    this.coordinate.y - this.radius,
                     this.radius
                 )
                 gradient.addColorStop(0, new Color(
@@ -220,7 +218,7 @@ export default function () {
                 gradient.addColorStop(1, this.color.rgba)
                 context.fillStyle = gradient
                 context.beginPath()
-                context.arc(x, y, this.radius, 0, 2 * Math.PI)
+                context.arc(this.coordinate.x, this.coordinate.y, this.radius, 0, 2 * Math.PI)
                 context.fill()
             }
 
@@ -355,7 +353,7 @@ export default function () {
             if (timeDifference > 0) {
                 this.counter.push({
                     timestamp: timestamp,
-                    fps: Math.round(1000 / timeDifference)
+                    fps: 1000 / timeDifference
                 })
             }
             this.lastTimestamp = timestamp
@@ -371,13 +369,13 @@ export default function () {
             }
             let font = `'Source Sans Pro'`
             if (this.canvas.width > this.canvas.height) {
-                coordinate.x = Math.round(this.canvas.height * .01)
+                coordinate.x = this.canvas.height * .01
                 coordinate.y = this.canvas.height - coordinate.x * 1.3
-                font = `${Math.round(this.canvas.height * .015)}px ${font}`
+                font = `${this.canvas.height * .015}px ${font}`
             } else {
-                coordinate.x = Math.round(this.canvas.width * .01)
+                coordinate.x = this.canvas.width * .01
                 coordinate.y = this.canvas.height - coordinate.x * 1.3
-                font = `${Math.round(this.canvas.width * .015)}px ${font}`
+                font = `${this.canvas.width * .015}px ${font}`
             }
 
             const context = this.canvas.getContext('2d')

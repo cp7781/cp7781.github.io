@@ -2,10 +2,8 @@ export default function () {
 
     function resizeCanvas(canvas) {
         if (window.innerWidth > window.innerHeight) {
-            // canvas.width = canvas.height = .4 * window.innerHeight
             canvas.width = canvas.height = 1000
         } else {
-            // canvas.width = canvas.height = .4 * window.innerWidth
             canvas.width = canvas.height = 1000
         }
     }
