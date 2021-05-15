@@ -416,7 +416,7 @@ export default function () {
                     if (document.fullscreenElement) {
                         document.exitFullscreen().catch(error => { console.error(error) })
                     } else {
-                        document.querySelector('#drawboard').requestFullscreen().catch(error => { console.error(error) })
+                        canvas.requestFullscreen().catch(error => { console.error(error) })
                     }
                     break
             }
