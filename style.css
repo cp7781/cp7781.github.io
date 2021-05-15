@@ -32,10 +32,6 @@ canvas#background {
     z-index: -1;
 }
 
-canvas#glasspane {
-    /* background-color: blue; */
-}
-
 @media (orientation: landscape) {
     body {
         padding: 10vh;
