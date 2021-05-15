@@ -1,23 +1,23 @@
 body {
-    background: darkslategrey;
-    color: seashell;
     margin: 0;
 }
 
 h1 {
     font-family: 'New Tegomin', serif;
     font-weight: 400;
+    color: seashell;
 }
 
 p#message {
     font-family: 'Syne Mono', monospace;
     font-weight: 400;
+    color: seashell;
 }
 
 div.link-project {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    position: absolute;
+    position: fixed;
 }
 
 div.link-project a {
@@ -26,10 +26,14 @@ div.link-project a {
 }
 
 canvas#drawboard {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
+}
+
+canvas#glasspane {
+    background-color: blue;
 }
 
 @media (orientation: landscape) {
@@ -49,6 +53,10 @@ canvas#drawboard {
         bottom: 1vh;
         right: 1vh;
     }
+    canvas#glasspane {
+        width: 40vh;
+        height: 40vh;
+    }
 }
 
 @media (orientation: portrait) {
@@ -67,5 +75,9 @@ canvas#drawboard {
         font-size: 1.5vw;
         bottom: 1vw;
         right: 1vw;
+    }
+    canvas#glasspane {
+        width: 40vw;
+        height: 40vw;
     }
 }
