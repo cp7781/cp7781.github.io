@@ -83,8 +83,8 @@ export default function () {
 
     class Circle {
 
-        constructor(drawboard) {
-            this.drawboard = drawboard
+        constructor(canvas) {
+            this.canvas = canvas
             this.radius = 10
             this.coordinate = {
                 x: 10,
@@ -100,16 +100,16 @@ export default function () {
             this.lastTimestamp = performance.now()
         }
 
-        static generateRandomCircle(drawboard) {
+        static generateRandomCircle(canvas) {
 
-            const smallestSideLength = drawboard.width > drawboard.height ? drawboard.height : drawboard.width
+            const smallestSideLength = canvas.width > canvas.height ? canvas.height : canvas.width
             const minimumRadius = Math.floor(smallestSideLength * .004)
             const maximumRadius = Math.floor(smallestSideLength * .036)
 
-            const circle = new Circle(drawboard)
+            const circle = new Circle(canvas)
             circle.radius = generateRandomInteger(minimumRadius, maximumRadius)
-            circle.coordinate.x = generateRandomInteger(circle.radius, drawboard.width - circle.radius)
-            circle.coordinate.y = generateRandomInteger(circle.radius, drawboard.height - circle.radius)
+            circle.coordinate.x = generateRandomInteger(circle.radius, canvas.width - circle.radius)
+            circle.coordinate.y = generateRandomInteger(circle.radius, canvas.height - circle.radius)
             circle.speed.x = Math.random() * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1)
             circle.speed.y = Math.random() * smallestSideLength * .00032 * (generateRandomInteger(0, 1) > 0 ? -1 : 1)
             circle.color = new Color(
@@ -190,20 +190,20 @@ export default function () {
                 this.speed.y *= -1
                 this.coordinate.y = this.radius
             }
-            if ((this.coordinate.x + this.radius) >= this.drawboard.width) {
+            if ((this.coordinate.x + this.radius) >= this.canvas.width) {
                 this.speed.x *= -1
-                this.coordinate.x = this.drawboard.width - this.radius
+                this.coordinate.x = this.canvas.width - this.radius
             }
-            if ((this.coordinate.y + this.radius) >= this.drawboard.height) {
+            if ((this.coordinate.y + this.radius) >= this.canvas.height) {
                 this.speed.y *= -1
-                this.coordinate.y = this.drawboard.height - this.radius
+                this.coordinate.y = this.canvas.height - this.radius
             }
 
             {
                 const x = Math.round(this.coordinate.x)
                 const y = Math.round(this.coordinate.y)
-                const drawboardContext = drawboard.getContext('2d')
-                const gradient = drawboardContext.createRadialGradient(
+                const context = this.canvas.getContext('2d')
+                const gradient = context.createRadialGradient(
                     x - this.radius * .32,
                     y - this.radius * .32,
                     this.radius,
@@ -218,10 +218,10 @@ export default function () {
                     .68
                 ).rgba)
                 gradient.addColorStop(1, this.color.rgba)
-                drawboardContext.fillStyle = gradient
-                drawboardContext.beginPath()
-                drawboardContext.arc(x, y, this.radius, 0, 2 * Math.PI)
-                drawboardContext.fill()
+                context.fillStyle = gradient
+                context.beginPath()
+                context.arc(x, y, this.radius, 0, 2 * Math.PI)
+                context.fill()
             }
 
         }
@@ -234,10 +234,10 @@ export default function () {
 
     class Animation {
 
-        constructor(drawboard) {
-            this.drawboard = drawboard
+        constructor(canvas) {
+            this.drawboard = canvas
             this.change()
-            this.fpsCounter = new FPSCounter(drawboard)
+            this.fpsCounter = new FPSCounter(canvas)
             this.fps = false
         }
 
@@ -279,9 +279,9 @@ export default function () {
 
     class Background {
 
-        constructor(drawboard) {
+        constructor(canvas) {
 
-            this.drawboard = drawboard
+            this.canvas = canvas
 
             this.color = new Color(
                 generateRandomInteger(0, 128),
@@ -330,12 +330,12 @@ export default function () {
                 }
             }
 
-            const drawboardContext = drawboard.getContext('2d')
-            const backgroundGradient = drawboardContext.createLinearGradient(0, 0, this.drawboard.width, this.drawboard.height)
-            backgroundGradient.addColorStop(0, 'darkslategray')
-            backgroundGradient.addColorStop(1, this.color.rgba)
-            drawboardContext.fillStyle = backgroundGradient
-            drawboardContext.fillRect(0, 0, this.drawboard.width, this.drawboard.height)
+            const context = this.canvas.getContext('2d')
+            const gradient = context.createLinearGradient(0, 0, this.canvas.width, this.canvas.height)
+            gradient.addColorStop(0, 'darkslategray')
+            gradient.addColorStop(1, this.color.rgba)
+            context.fillStyle = gradient
+            context.fillRect(0, 0, this.canvas.width, this.canvas.height)
 
         }
 
@@ -343,8 +343,8 @@ export default function () {
 
     class FPSCounter {
 
-        constructor(drawboard) {
-            this.drawboard = drawboard
+        constructor(canvas) {
+            this.canvas = canvas
             this.counter = new Array()
             this.lastTimestamp = performance.now()
         }
@@ -370,20 +370,20 @@ export default function () {
                 y: 0
             }
             let font = `'Source Sans Pro'`
-            if (drawboard.width > drawboard.height) {
-                coordinate.x = Math.round(drawboard.height * .01)
-                coordinate.y = drawboard.height - coordinate.x * 1.3
-                font = `${Math.round(drawboard.height * .015)}px ${font}`
+            if (this.canvas.width > this.canvas.height) {
+                coordinate.x = Math.round(this.canvas.height * .01)
+                coordinate.y = this.canvas.height - coordinate.x * 1.3
+                font = `${Math.round(this.canvas.height * .015)}px ${font}`
             } else {
-                coordinate.x = Math.round(drawboard.width * .01)
-                coordinate.y = drawboard.height - coordinate.x * 1.3
-                font = `${Math.round(drawboard.width * .015)}px ${font}`
+                coordinate.x = Math.round(this.canvas.width * .01)
+                coordinate.y = this.canvas.height - coordinate.x * 1.3
+                font = `${Math.round(this.canvas.width * .015)}px ${font}`
             }
 
-            const drawboardContext = drawboard.getContext('2d')
-            drawboardContext.fillStyle = 'seashell'
-            drawboardContext.font = font
-            drawboardContext.fillText(`${averageFPS} fps`, coordinate.x, coordinate.y)
+            const context = this.canvas.getContext('2d')
+            context.fillStyle = 'seashell'
+            context.font = font
+            context.fillText(`${averageFPS} fps`, coordinate.x, coordinate.y)
 
         }
 
@@ -391,16 +391,16 @@ export default function () {
 
     {
 
-        const drawboard = document.getElementById('drawboard')
-        drawboard.width = window.innerWidth
-        drawboard.height = window.innerHeight
+        const canvas = document.getElementById('background')
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
 
-        const animation = new Animation(drawboard)
+        const animation = new Animation(canvas)
         animation.execute()
 
         window.addEventListener('resize', event => {
-            drawboard.width = window.innerWidth
-            drawboard.height = window.innerHeight
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
             animation.change()
         })
 
