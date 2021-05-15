@@ -1,30 +1,27 @@
-import Matter from 'https://cdn.skypack.dev/matter-js'
+import Matter from 'https://cdn.skypack.dev/pin/matter-js@v0.17.1-x9Mw93jy1LkhmwjK6AQI/mode=imports,min/optimized/matter-js.js'
 
 export default function () {
-    let Engine = Matter.Engine,
-        Render = Matter.Render,
-        World = Matter.World,
-        Bodies = Matter.Bodies;
 
-    let engine = Engine.create();
+    const engine = Matter.Engine.create();
 
-    let render = Render.create({
+    const render = Matter.Render.create({
         element: document.body,
         engine: engine,
         options: {
-            width: 800,
-            height: 400,
+            width: 600,
+            height: 300,
             wireframes: false
         }
     });
 
-    let boxA = Bodies.rectangle(400, 200, 80, 80);
-    let ballA = Bodies.circle(380, 100, 40, 10);
-    let ballB = Bodies.circle(460, 10, 40, 10);
-    let ground = Bodies.rectangle(400, 380, 810, 60, { isStatic: true });
+    const boxA = Matter.Bodies.rectangle(400, 200, 80, 80);
+    const ballA = Matter.Bodies.circle(380, 100, 40, 10);
+    const ballB = Matter.Bodies.circle(460, 10, 40, 10);
+    const ground = Matter.Bodies.rectangle(300, 290, 400, 10, { isStatic: true });
 
-    World.add(engine.world, [boxA, ballA, ballB, ground]);
+    Matter.World.add(engine.world, [boxA, ballA, ballB, ground]);
 
-    Engine.run(engine);
-    Render.run(render);
+    Matter.Runner.run(engine);
+    Matter.Render.run(render);
+
 }
