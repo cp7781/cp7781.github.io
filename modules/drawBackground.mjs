@@ -391,7 +391,7 @@ export default function () {
 
     {
 
-        const canvas = document.getElementById('background')
+        const canvas = document.querySelector('#background')
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
 

@@ -33,7 +33,7 @@ canvas#background {
 }
 
 canvas#glasspane {
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 @media (orientation: landscape) {
