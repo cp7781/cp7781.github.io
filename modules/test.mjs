@@ -1,4 +1,4 @@
-import 'https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js'
+import Matter from 'https://cdn.skypack.dev/matter-js'
 
 export function test() {
     let Engine = Matter.Engine,
