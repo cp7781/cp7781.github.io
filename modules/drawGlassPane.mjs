@@ -6,7 +6,7 @@ export default function () {
             canvas.width = canvas.height = 1000
         } else {
             // canvas.width = canvas.height = .4 * window.innerWidth
-            canvas.width = canvas.height = 100
+            canvas.width = canvas.height = 1000
         }
     }
 
