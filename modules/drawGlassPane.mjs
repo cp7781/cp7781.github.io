@@ -1,15 +1,5 @@
 export default function () {
 
-    function resizeCanvas(canvas) {
-        if (window.innerWidth > window.innerHeight) {
-            // canvas.width = canvas.height = .4 * window.innerHeight
-            canvas.width = canvas.height = 1000
-        } else {
-            // canvas.width = canvas.height = .4 * window.innerWidth
-            canvas.width = canvas.height = 1000
-        }
-    }
-
     class Symbol {
 
         constructor(canvas) {
@@ -23,7 +13,7 @@ export default function () {
             context.fillStyle = 'seashell'
             for (let x = 1; x <= 3; x++) {
                 for (let y = 1; y <= 3; y++) {
-                    switch(x + y) {
+                    switch (x + y) {
                         case 3:
                             context.fillRect(
                                 x * 50 + (x - 1) * 100 - 20,
@@ -70,13 +60,8 @@ export default function () {
     {
 
         const canvas = document.querySelector('#glasspane')
-        resizeCanvas(canvas)
+        canvas.width = canvas.height = 1000
         draw(canvas)
-
-        window.addEventListener('resize', event => {
-            resizeCanvas(canvas)
-            draw(canvas)
-        })
 
     }
 
