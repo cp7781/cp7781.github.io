@@ -1,4 +1,4 @@
-export function change() {
+export default function () {
     const timeout = 79
     const message = document.getElementById('message')
     const text = message.textContent
