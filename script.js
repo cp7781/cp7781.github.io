@@ -1,9 +1,9 @@
 import changeMessage from './modules/changeMessage.mjs'
 import drawBackground from './modules/drawBackground.mjs'
-import drawGlassPane from './modules/drawGlassPane.mjs'
+import drawSymbol from './modules/drawSymbol.mjs'
 
 window.addEventListener('load', event => {
     changeMessage()
     drawBackground()
-    drawGlassPane()
+    drawSymbol()
 })

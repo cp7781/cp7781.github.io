@@ -49,7 +49,7 @@ canvas#background {
         bottom: 1vh;
         right: 1vh;
     }
-    canvas#glasspane {
+    canvas#symbol {
         width: 40vh;
         height: 40vh;
     }
@@ -72,7 +72,7 @@ canvas#background {
         bottom: 1vw;
         right: 1vw;
     }
-    canvas#glasspane {
+    canvas#symbol {
         width: 40vw;
         height: 40vw;
     }

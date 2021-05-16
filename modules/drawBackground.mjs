@@ -431,6 +431,10 @@ export default function () {
                 animation.change()
             }
         })
+        document.querySelector('#symbol').addEventListener('click', event => {
+            animation.fps = !animation.fps
+            event.stopPropagation()
+        })
 
     }
 

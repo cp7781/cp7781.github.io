@@ -59,7 +59,7 @@ export default function () {
 
     {
 
-        const canvas = document.querySelector('#glasspane')
+        const canvas = document.querySelector('#symbol')
         canvas.width = canvas.height = 1000
         draw(canvas)
 
