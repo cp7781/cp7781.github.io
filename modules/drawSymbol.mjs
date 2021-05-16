@@ -8,7 +8,7 @@ export default function () {
 
         draw() {
             const context = this.canvas.getContext('2d')
-            context.translate(320, 0)
+            context.translate(320, 32)
             context.rotate((Math.PI / 180) * 32)
             context.fillStyle = 'seashell'
             for (let x = 1; x <= 3; x++) {
