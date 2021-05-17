@@ -381,7 +381,7 @@ export default function () {
             const context = this.canvas.getContext('2d')
             context.fillStyle = 'seashell'
             context.font = font
-            context.fillText(`⍈ ${averageFPS} fps`, coordinate.x, coordinate.y)
+            context.fillText(`${averageFPS} fps`, coordinate.x, coordinate.y)
 
         }
 
