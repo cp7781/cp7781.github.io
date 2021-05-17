@@ -45,7 +45,7 @@ canvas#background {
         text-shadow: 0 0 .25vh seashell;
     }
     div.link-project {
-        font-size: 1.5vh;
+        font-size: 3vh;
         bottom: 1vh;
         right: 1vh;
     }
@@ -68,7 +68,7 @@ canvas#background {
         text-shadow: 0 0 .25vw seashell;
     }
     div.link-project {
-        font-size: 1.5vw;
+        font-size: 3vw;
         bottom: 1vw;
         right: 1vw;
     }
