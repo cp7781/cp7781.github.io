@@ -371,11 +371,11 @@ export default function () {
             if (this.canvas.width > this.canvas.height) {
                 coordinate.x = this.canvas.height * .01
                 coordinate.y = this.canvas.height - coordinate.x * 1.3
-                font = `${Math.round(this.canvas.height * .015)}px ${font}`
+                font = `${this.canvas.height * .015}px ${font}`
             } else {
                 coordinate.x = this.canvas.width * .01
                 coordinate.y = this.canvas.height - coordinate.x * 1.3
-                font = `${Math.round(this.canvas.width * .015)}px ${font}`
+                font = `${this.canvas.width * .015}px ${font}`
             }
 
             const context = this.canvas.getContext('2d')
