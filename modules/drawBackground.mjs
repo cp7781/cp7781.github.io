@@ -369,13 +369,13 @@ export default function () {
             }
             let font = `'Source Sans Pro'`
             if (this.canvas.width > this.canvas.height) {
-                coordinate.x = this.canvas.height * .01
-                coordinate.y = this.canvas.height - coordinate.x * 1.3
-                font = `${this.canvas.height * .015}px ${font}`
+                coordinate.x = Math.round(this.canvas.height * .01)
+                coordinate.y = Math.round(this.canvas.height - coordinate.x * 1.3)
+                font = `${Math.ceil(this.canvas.height * .015)}px ${font}`
             } else {
-                coordinate.x = this.canvas.width * .01
-                coordinate.y = this.canvas.height - coordinate.x * 1.3
-                font = `${this.canvas.width * .015}px ${font}`
+                coordinate.x = Math.round(this.canvas.width * .01)
+                coordinate.y = Math.round(this.canvas.height - coordinate.x * 1.3)
+                font = `${Math.ceil(this.canvas.width * .015)}px ${font}`
             }
 
             const context = this.canvas.getContext('2d')
