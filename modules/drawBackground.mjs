@@ -1,3 +1,5 @@
+import { FramesPerSecondCounter } from './FramesPerSecondCounter.mjs'
+
 export default function () {
 
     class Color {
@@ -235,8 +237,7 @@ export default function () {
         constructor(canvas) {
             this.drawboard = canvas
             this.change()
-            this.fpsCounter = new FPSCounter(canvas)
-            this.fps = false
+            this.framesPerSecondCounter = new FramesPerSecondCounter();
         }
 
         change() {
@@ -257,20 +258,14 @@ export default function () {
         }
 
         execute(timestamp) {
+            this.framesPerSecondCounter.countFrame(timestamp)
             this.background.draw(timestamp)
             this.circles.forEach(circle => circle.draw(timestamp))
-            if (this.fps) {
-                this.fpsCounter.draw(timestamp)
-            }
             requestAnimationFrame(timestamp => this.execute(timestamp))
         }
 
-        set fps(fps) {
-            this._fps = fps
-        }
-
-        get fps() {
-            return this._fps
+        get framesPerSecond() {
+            return this.framesPerSecondCounter.averageFramesPerSecond
         }
 
     }
@@ -339,58 +334,6 @@ export default function () {
 
     }
 
-    class FPSCounter {
-
-        constructor(canvas) {
-            this.canvas = canvas
-            this.counter = new Array()
-            this.lastTimestamp = performance.now()
-        }
-
-        draw(timestamp) {
-
-            const timeDifference = timestamp - this.lastTimestamp
-            if (timeDifference > 0) {
-                this.counter.push({
-                    timestamp: timestamp,
-                    fps: 1000 / timeDifference
-                })
-            }
-            this.lastTimestamp = timestamp
-
-            this.counter = this.counter.filter(count => timestamp - count.timestamp < 1000)
-            let averageFPS = 0
-            this.counter.forEach(count => averageFPS += count.fps)
-            averageFPS = Math.round(averageFPS / this.counter.length)
-
-            const coordinate = {
-                x: 0,
-                y: 0
-            }
-            let fontSize = 12
-            if (this.canvas.width > this.canvas.height) {
-                fontSize = this.canvas.height * .015
-                coordinate.x = this.canvas.height * .01
-                coordinate.y = this.canvas.height - coordinate.x * 1.2
-            } else {
-                fontSize = this.canvas.width * .015
-                coordinate.x = this.canvas.width * .01
-                coordinate.y = this.canvas.height - coordinate.x * 1.2
-            }
-            fontSize = Math.round(fontSize)
-            const font = `${fontSize}px 'Source Sans Pro'`
-            coordinate.x = Math.round(coordinate.x);
-            coordinate.y = Math.round(coordinate.y);
-
-            const context = this.canvas.getContext('2d')
-            context.fillStyle = 'seashell'
-            context.font = font
-            context.fillText(`${averageFPS} fps`, coordinate.x, coordinate.y)
-
-        }
-
-    }
-
     {
 
         const canvas = document.querySelector('#background')
@@ -435,10 +378,21 @@ export default function () {
                 animation.change()
             }
         })
-        document.querySelector('#symbol').addEventListener('click', event => {
-            animation.fps = !animation.fps
-            event.stopPropagation()
-        })
+
+        {
+
+            const framesPerSecond = document.querySelector('#framesPerSecond')
+            
+            window.setInterval(() => framesPerSecond.innerHTML = `${animation.framesPerSecond} fps`, 1000)
+            
+            let framesPerSecondVisible = false
+            document.querySelector('#symbol').addEventListener('click', event => {
+                framesPerSecondVisible = !framesPerSecondVisible
+                framesPerSecond.style.visibility = framesPerSecondVisible ? 'visible' : 'hidden'
+                event.stopPropagation()
+            })
+
+        }
 
     }
 

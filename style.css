@@ -4,23 +4,27 @@ body {
 
 h1 {
     font-family: 'New Tegomin', serif;
-    font-weight: 400;
     color: seashell;
 }
 
 p#message {
     font-family: 'Syne Mono', monospace;
-    font-weight: 400;
     color: seashell;
 }
 
-div.link-project {
+div#framesPerSecond {
+    color: seashell;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
+    position: fixed;
+    visibility: hidden;
+}
+
+div#link-project {
+    font-family: 'Source Sans Pro', sans-serif;
     position: fixed;
 }
 
-div.link-project a {
+div#link-project a {
     text-decoration: none;
     color: seashell;
 }
@@ -44,7 +48,12 @@ canvas#background {
         font-size: 5vh;
         text-shadow: 0 0 .25vh seashell;
     }
-    div.link-project {
+    div#framesPerSecond {
+        font-size: 1.5vh;
+        bottom: 1vh;
+        left: 1vh;
+    }
+    div#link-project {
         font-size: 3vh;
         bottom: 1vh;
         right: 1vh;
@@ -67,7 +76,12 @@ canvas#background {
         font-size: 5vw;
         text-shadow: 0 0 .25vw seashell;
     }
-    div.link-project {
+    div#framesPerSecond {
+        font-size: 2vw;
+        bottom: 1vw;
+        left: 1vw;
+    }
+    div#link-project {
         font-size: 3vw;
         bottom: 1vw;
         right: 1vw;
