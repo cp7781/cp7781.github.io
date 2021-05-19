@@ -367,16 +367,20 @@ export default function () {
                 x: 0,
                 y: 0
             }
-            let font = `'Source Sans Pro'`
+            let fontSize = 12
             if (this.canvas.width > this.canvas.height) {
+                fontSize = this.canvas.height * .015
                 coordinate.x = this.canvas.height * .01
-                coordinate.y = this.canvas.height - coordinate.x * 1.75
-                font = `${this.canvas.height * .03}px ${font}`
+                coordinate.y = this.canvas.height - coordinate.x * 1.2
             } else {
+                fontSize = this.canvas.width * .015
                 coordinate.x = this.canvas.width * .01
-                coordinate.y = this.canvas.height - coordinate.x * 1.75
-                font = `${this.canvas.width * .03}px ${font}`
+                coordinate.y = this.canvas.height - coordinate.x * 1.2
             }
+            fontSize = Math.round(fontSize)
+            const font = `${fontSize}px 'Source Sans Pro'`
+            coordinate.x = Math.round(coordinate.x);
+            coordinate.y = Math.round(coordinate.y);
 
             const context = this.canvas.getContext('2d')
             context.fillStyle = 'seashell'
