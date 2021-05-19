@@ -6,7 +6,6 @@ export class FramesPerSecondCounter {
     }
 
     countFrame(timestamp) {
-
         const timeDifference = timestamp - this.lastTimestamp
         if (timeDifference > 0) {
             this.entries.push({
@@ -15,9 +14,7 @@ export class FramesPerSecondCounter {
             })
         }
         this.lastTimestamp = timestamp
-
         this.entries = this.entries.filter(count => timestamp - count.timestamp < 1000)
-
     }
 
     get averageFramesPerSecond() {
