@@ -26,10 +26,10 @@ export default function () {
                             break
                         case 5:
                             context.fillRect(
-                                x * 50 + (x - 1) * 200 + 20,
-                                y * 50 + (y - 1) * 200 + 20,
-                                160,
-                                160
+                                x * 50 + (x - 1) * 200 + 40,
+                                y * 50 + (y - 1) * 200 + 40,
+                                120,
+                                120
                             )
                             break
                         default:
