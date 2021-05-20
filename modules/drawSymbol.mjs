@@ -8,7 +8,7 @@ export default function () {
 
         draw() {
             const context = this.canvas.getContext('2d')
-            context.translate(320, 32)
+            context.translate(380, -50)
             context.rotate((Math.PI / 180) * 32)
             context.fillStyle = 'seashell'
             for (let x = 1; x <= 3; x++) {
@@ -16,28 +16,28 @@ export default function () {
                     switch (x + y) {
                         case 3:
                             context.fillRect(
-                                x * 50 + (x - 1) * 100 - 20,
-                                y * 50 + (y - 1) * 100 - 20,
-                                140,
-                                140
+                                x * 50 + (x - 1) * 200 - 20,
+                                y * 50 + (y - 1) * 200 - 20,
+                                240,
+                                240
                             )
                             break
                         case 4:
                             break
                         case 5:
                             context.fillRect(
-                                x * 50 + (x - 1) * 100 + 20,
-                                y * 50 + (y - 1) * 100 + 20,
-                                60,
-                                60
+                                x * 50 + (x - 1) * 200 + 20,
+                                y * 50 + (y - 1) * 200 + 20,
+                                160,
+                                160
                             )
                             break
                         default:
                             context.fillRect(
-                                x * 50 + (x - 1) * 100,
-                                y * 50 + (y - 1) * 100,
-                                100,
-                                100
+                                x * 50 + (x - 1) * 200,
+                                y * 50 + (y - 1) * 200,
+                                200,
+                                200
                             )
                             break
                     }

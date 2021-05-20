@@ -59,8 +59,8 @@ canvas#background {
         right: 1vh;
     }
     canvas#symbol {
-        width: 40vh;
-        height: 40vh;
+        width: 20vh;
+        height: 20vh;
     }
 }
 
@@ -87,7 +87,7 @@ canvas#background {
         right: 1vw;
     }
     canvas#symbol {
-        width: 40vw;
-        height: 40vw;
+        width: 20vw;
+        height: 20vw;
     }
 }
