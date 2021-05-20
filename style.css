@@ -5,23 +5,27 @@ body {
 
 h1 {
     font-family: 'New Tegomin', serif;
+    font-weight: 400;
     color: seashell;
 }
 
 p#message {
     font-family: 'Syne Mono', monospace;
+    font-weight: 400;
     color: seashell;
 }
 
 div#framesPerSecond {
     color: seashell;
     font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
     position: fixed;
     visibility: hidden;
 }
 
 div#project {
     font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
     position: fixed;
 }
 
