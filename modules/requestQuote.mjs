@@ -1,5 +1,5 @@
 export default function () {
-    document.querySelector('#quote').addEventListener('click', event => changeQuote())
+    document.querySelector('#quote').addEventListener('dblclick', event => changeQuote())
     changeQuote()
 }
 
