@@ -63,12 +63,13 @@ canvas#background {
     canvas#symbol {
         width: 20vh;
         height: 20vh;
-        margin: 5vh;
+        margin: 2vh;
     }
     div#quote {
         font-size: 3vh;
-        bottom: 10vh;
-        right: 10vh;
+        bottom: 5vh;
+        right: 5vh;
+        padding: 5vh;
         width: 50vh;
     }
     div#framesPerSecond {
@@ -98,12 +99,13 @@ canvas#background {
     canvas#symbol {
         width: 20vw;
         height: 20vw;
-        margin: 5vw;
+        margin: 2vw;
     }
     div#quote {
         font-size: 3vw;
-        bottom: 10vw;
-        right: 10vw;
+        bottom: 5vw;
+        right: 5vw;
+        padding: 5vw;
         width: 50vw;
     }
     div#framesPerSecond {
