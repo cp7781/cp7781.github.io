@@ -67,10 +67,9 @@ canvas#background {
     }
     div#quote {
         font-size: 3vh;
-        bottom: 5vh;
-        right: 5vh;
-        padding: 5vh;
-        width: 50vh;
+        bottom: 15vh;
+        right: 15vh;
+        width: 45vh;
     }
     div#framesPerSecond {
         font-size: 1.5vh;
@@ -103,10 +102,9 @@ canvas#background {
     }
     div#quote {
         font-size: 3vw;
-        bottom: 5vw;
-        right: 5vw;
-        padding: 5vw;
-        width: 50vw;
+        bottom: 15vw;
+        right: 15vw;
+        width: 45vw;
     }
     div#framesPerSecond {
         font-size: 2vw;

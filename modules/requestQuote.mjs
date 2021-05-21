@@ -1,9 +1,4 @@
 export default function () {
-    document.querySelector('#quote').addEventListener('dblclick', event => changeQuote())
-    changeQuote()
-}
-
-function changeQuote() {
     const request = new XMLHttpRequest()
     request.responseType = 'json'
     request.addEventListener('load', event => {
