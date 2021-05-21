@@ -1,7 +1,12 @@
 export default function () {
+    document.querySelector('#quote').addEventListener('click', event => changeQuote())
+    changeQuote()
+}
+
+function changeQuote() {
     const request = new XMLHttpRequest()
     request.responseType = 'json'
-    request.addEventListener('load', (event) => {
+    request.addEventListener('load', event => {
         const quote = event.target.response.data[0];
         document.querySelector('#quote').innerHTML = `${quote.quoteText} - ${quote.quoteAuthor}`
     })
