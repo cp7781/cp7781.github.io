@@ -5,7 +5,7 @@ export class Color {
         this._green = green
         this._blue = blue
         this._alpha = alpha
-        this.limit = {
+        this._limit = {
             red: {
                 minimum: 0,
                 maximum: 255
@@ -26,10 +26,10 @@ export class Color {
     }
 
     set red(red) {
-        if (red < this.limit.red.minimum) {
-            red = this.limit.red.minimum
-        } else if (red > this.limit.red.maximum) {
-            red = this.limit.red.maximum
+        if (red < this._limit.red.minimum) {
+            red = this._limit.red.minimum
+        } else if (red > this._limit.red.maximum) {
+            red = this._limit.red.maximum
         }
         this._red = red
     }
@@ -39,10 +39,10 @@ export class Color {
     }
 
     set green(green) {
-        if (green < this.limit.green.minimum) {
-            green = this.limit.green.minimum
-        } else if (green > this.limit.green.maximum) {
-            green = this.limit.green.maximum
+        if (green < this._limit.green.minimum) {
+            green = this._limit.green.minimum
+        } else if (green > this._limit.green.maximum) {
+            green = this._limit.green.maximum
         }
         this._green = green
     }
@@ -52,10 +52,10 @@ export class Color {
     }
 
     set blue(blue) {
-        if (blue < this.limit.blue.minimum) {
-            blue = this.limit.blue.minimum
-        } else if (blue > this.limit.blue.maximum) {
-            blue = this.limit.blue.maximum
+        if (blue < this._limit.blue.minimum) {
+            blue = this._limit.blue.minimum
+        } else if (blue > this._limit.blue.maximum) {
+            blue = this._limit.blue.maximum
         }
         this._blue = blue
     }
