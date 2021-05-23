@@ -1,4 +1,4 @@
-export class FramesPerSecondCounter {
+export class FramesPerSecond {
 
     constructor() {
         this.entries = new Array()
@@ -17,11 +17,11 @@ export class FramesPerSecondCounter {
         this.entries = this.entries.filter(count => timestamp - count.timestamp < 1000)
     }
 
-    get averageFramesPerSecond() {
-        let averageFramesPerSecond = 0
-        this.entries.forEach(entry => averageFramesPerSecond += entry.estimatedFramesPerSecond)
-        averageFramesPerSecond = Math.round(averageFramesPerSecond / this.entries.length)
-        return averageFramesPerSecond
+    get average() {
+        let average = 0
+        this.entries.forEach(entry => average += entry.estimatedFramesPerSecond)
+        average = Math.round(average / this.entries.length)
+        return average
     }
 
 }

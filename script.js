@@ -1,11 +1,11 @@
-import changeMessage from './modules/changeMessage.mjs'
-import drawBackground from './modules/drawBackground.mjs'
-import drawSymbol from './modules/drawSymbol.mjs'
-import requestQuote from './modules/requestQuote.mjs'
+import changeMessage from './module/changeMessage.js'
+import paintBackground from './module/background/paint.js'
+import drawSymbol from './module/drawSymbol.js'
+import requestQuote from './module/requestQuote.js'
 
 window.addEventListener('load', event => {
     changeMessage()
-    drawBackground()
+    paintBackground()
     drawSymbol()
     requestQuote()
 })
