@@ -15,6 +15,17 @@ div#information {
     font-weight: 400;
 }
 
+button#changeWallpaper, button#changeQuote {
+    position: fixed;
+    top: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    color: seashell;
+    background-color: rgba(47, 79, 79, .68);
+    border: none;
+    margin: 0;
+}
+
 div#quote {
     color: seashell;
     background-color: rgba(47, 79, 79, .68);
@@ -45,6 +56,19 @@ div#project a {
     div#information {
         top: 5.12vh;
         left: 5.12vh;
+    }
+    button#changeWallpaper, button#changeQuote {
+        padding: 1vh;
+        font-size: 1.5vh;
+        width: 10vh;
+        border-bottom-left-radius: .5vh;
+        border-bottom-right-radius: .5vh;
+    }
+    button#changeWallpaper {
+        right: 12vh;
+    }
+    button#changeQuote {
+        right: 1vh;
     }
     div#date {
         font-size: 3.5vh;
@@ -84,6 +108,19 @@ div#project a {
     }
     div#time {
         font-size: 7vw;
+    }
+    button#changeWallpaper, button#changeQuote {
+        padding: 1vw;
+        font-size: 1.5vw;
+        width: 10vw;
+        border-bottom-left-radius: .5vw;
+        border-bottom-right-radius: .5vw;
+    }
+    button#changeWallpaper {
+        right: 12vw;
+    }
+    button#changeQuote {
+        right: 1vw;
     }
     div#quote {
         font-size: 4vw;
