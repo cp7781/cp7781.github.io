@@ -9,7 +9,7 @@ body {
 div#quote {
     color: seashell;
     background-color: rgba(47, 79, 79, .68);
-    font-family: 'New Tegomin', sans-serif;
+    font-family: 'Annie Use Your Telescope', sans-serif;
     font-weight: 400;
     position: fixed;
 }
@@ -28,7 +28,7 @@ div#project a {
 
 @media (orientation: landscape) {
     div#quote {
-        font-size: 3vh;
+        font-size: 4vh;
         padding: 1vh;
         padding-left: 2vh;
         padding-right: 2vh;
@@ -51,7 +51,7 @@ div#project a {
 
 @media (orientation: portrait) {
     div#quote {
-        font-size: 3vw;
+        font-size: 4vw;
         padding: 1vw;
         padding-left: 2vw;
         padding-right: 2vw;
