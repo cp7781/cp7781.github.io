@@ -1,3 +1,7 @@
+/*
+query information from Quote Garden
+more information on how to use: https://github.com/pprathameshmore/QuoteGarden
+*/
 export default function () {
     const request = new XMLHttpRequest()
     request.responseType = 'json'
