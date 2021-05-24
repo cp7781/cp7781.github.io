@@ -1,18 +1,20 @@
 import changeQuote from './module/quote/change.js'
 import changeWallpaper from './module/wallpaper/change.js'
+import changeInformation from './module/information/change.js'
 
 window.addEventListener('load', event => {
     changeQuote()
     changeWallpaper()
+    changeInformation()
 })
 
 window.addEventListener('click', event => {
     const x = event.x / window.innerWidth
     const y = event.y / window.innerHeight
-    if (x < .32 && y < .32) {
+    if (x > .68 && y < .32) {
         changeWallpaper()
     }
-    if (x > .68 && y < .32) {
+    if (x < .32 && y > .68) {
         changeQuote()
     }
 })

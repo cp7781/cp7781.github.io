@@ -6,12 +6,27 @@ body {
     background-position: center;
 }
 
+div#information {
+    position: fixed;
+    color: white;
+    font-family: sans-serif;
+    text-shadow: 0 0 2px black;
+    font-family: 'Bellota Text', cursive;
+    font-weight: 400;
+}
+
 div#quote {
     color: seashell;
     background-color: rgba(47, 79, 79, .68);
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
+    visibility: hidden;
+}
+
+div#quote a {
+    color: seashell;
+    text-decoration: none;
 }
 
 div#project {
@@ -27,6 +42,16 @@ div#project a {
 }
 
 @media (orientation: landscape) {
+    div#information {
+        top: 5.12vh;
+        left: 5.12vh;
+    }
+    div#date {
+        font-size: 3.5vh;
+    }
+    div#time {
+        font-size: 7vh;
+    }
     div#quote {
         font-size: 4vh;
         padding: 1vh;
@@ -39,10 +64,10 @@ div#project a {
     }
     div#project {
         font-size: 2vh;
-        padding: 1vh;
         padding-top: .5vh;
         padding-left: 1.5vh;
         padding-right: 1.25vh;
+        padding-bottom: .75vh;
         border-top-left-radius: .5vh;
         bottom: 0;
         right: 0;
@@ -50,6 +75,16 @@ div#project a {
 }
 
 @media (orientation: portrait) {
+    div#information {
+        top: 5.12vw;
+        left: 5.12vw;
+    }
+    div#date {
+        font-size: 3.5vw;
+    }
+    div#time {
+        font-size: 7vw;
+    }
     div#quote {
         font-size: 4vw;
         padding: 1vw;
@@ -62,10 +97,10 @@ div#project a {
     }
     div#project {
         font-size: 2vw;
-        padding: 1vw;
         padding-top: .5vw;
         padding-left: 1.5vw;
         padding-right: 1.25vw;
+        padding-bottom: .75vw;
         border-top-left-radius: .5vw;
         bottom: 0;
         right: 0;
