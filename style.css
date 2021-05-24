@@ -9,7 +9,7 @@ body {
 div#quote {
     color: seashell;
     background-color: rgba(47, 79, 79, .68);
-    font-family: 'Annie Use Your Telescope', sans-serif;
+    font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
 }
