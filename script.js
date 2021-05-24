@@ -8,19 +8,41 @@ window.addEventListener('load', event => {
     changeInformation()
 })
 
+/*
+gesture to change the quote
+*/
 {
     let x = 0
     const quote = document.querySelector('#quote')
     quote.addEventListener('touchstart', event => {
         x = event.pageX
+        event.stopPropagation()
     })
-    window.addEventListener('touchend', event => {
-        if (event.pageX > x && (event.pageX - x) / window.innerWidth > .1) {
+    quote.addEventListener('touchend', event => {
+        if (event.pageX > x && (event.pageX - x) / window.innerWidth > .2) {
             changeQuote()
+            event.stopPropagation()
         }
     })
 }
-    
+
+/*
+gesture to change the wallpaper
+*/
+{
+    let x = 0
+    document.addEventListener('touchstart', event => {
+        x = event.pageX
+        event.stopPropagation()
+    })
+    document.addEventListener('touchend', event => {
+        if (event.pageX > x && (event.pageX - x) / window.innerWidth > .2) {
+            changeWallpaper()
+            event.stopPropagation()
+        }
+    })
+}
+
 window.addEventListener('click', event => {
     const x = event.x / window.innerWidth
     const y = event.y / window.innerHeight
