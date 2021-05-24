@@ -1,9 +1,15 @@
 body {
     margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 div#quote {
-    font-family: 'Source Sans Pro', sans-serif;
+    color: seashell;
+    background-color: rgba(47, 79, 79, .68);
+    font-family: 'New Tegomin', sans-serif;
     font-weight: 400;
     position: fixed;
 }
@@ -12,42 +18,56 @@ div#project {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     position: fixed;
+    background-color: rgba(47, 79, 79, .68);
 }
 
 div#project a {
+    color: seashell;
     text-decoration: none;
 }
 
 @media (orientation: landscape) {
-    body {
-        padding: 10vh;
-    }
     div#quote {
         font-size: 3vh;
-        bottom: 15vh;
-        right: 15vh;
-        width: 45vh;
+        padding: 1vh;
+        padding-left: 2vh;
+        padding-right: 2vh;
+        border-radius: 1vh;
+        bottom: 10.24vh;
+        right: 10.24vh;
+        max-width: 68vh;
     }
     div#project {
-        font-size: 3vh;
-        bottom: 1vh;
-        right: 1vh;
+        font-size: 2vh;
+        padding: 1vh;
+        padding-top: .5vh;
+        padding-left: 1.5vh;
+        padding-right: 1.25vh;
+        border-top-left-radius: .5vh;
+        bottom: 0;
+        right: 0;
     }
 }
 
 @media (orientation: portrait) {
-    body {
-        padding: 10vw;
-    }
     div#quote {
         font-size: 3vw;
-        bottom: 15vw;
-        right: 15vw;
-        width: 45vw;
+        padding: 1vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        border-radius: 1vw;
+        bottom: 10.24vw;
+        right: 10.24vw;
+        max-width: 68vw;
     }
     div#project {
-        font-size: 3vw;
-        bottom: 1vw;
-        right: 1vw;
+        font-size: 2vw;
+        padding: 1vw;
+        padding-top: .5vw;
+        padding-left: 1.5vw;
+        padding-right: 1.25vw;
+        border-top-left-radius: .5vw;
+        bottom: 0;
+        right: 0;
     }
 }
