@@ -8,13 +8,26 @@ window.addEventListener('load', event => {
     changeInformation()
 })
 
+{
+    let x = 0
+    const quote = document.querySelector('#quote')
+    quote.addEventListener('touchstart', event => {
+        x = event.pageX
+    })
+    window.addEventListener('touchend', event => {
+        if (event.pageX > x && (event.pageX - x) / window.innerWidth > .1) {
+            changeQuote()
+        }
+    })
+}
+    
 window.addEventListener('click', event => {
     const x = event.x / window.innerWidth
     const y = event.y / window.innerHeight
-    if (x > .68 && y < .32) {
+    if (x > .9 && y < .33) {
         changeWallpaper()
     }
-    if (x < .32 && y > .68) {
+    if (x > .9 && y > .33 && y < .66) {
         changeQuote()
     }
 })
