@@ -11,7 +11,6 @@ div#information {
     color: white;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
-    text-shadow: 0 0 2px black;
 }
 
 button#changeWallpaper, button#changeQuote {
@@ -20,8 +19,6 @@ button#changeWallpaper, button#changeQuote {
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     color: white;
-    text-shadow: 0 0 2px black;
-    box-shadow: 0 0 2px black;
     border-top: none;
     border-left: 1px solid white;
     border-right: 1px solid white;
@@ -36,7 +33,6 @@ button#changeWallpaper:focus, button#changeQuote:focus {
 
 div#quote {
     color: white;
-    text-shadow: 0 0 2px black;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
@@ -58,14 +54,13 @@ a#project {
     color: white;
     text-decoration: none;
     text-align: center;
-    text-shadow: 0 0 2px black;
-    box-shadow: 0 0 2px black;
 }
 
 @media (orientation: landscape) {
     div#information {
         top: 7vh;
         left: 7vh;
+        text-shadow: 0 0 .25vh black;
     }
     button#changeWallpaper, button#changeQuote {
         padding: 1vh;
@@ -73,6 +68,8 @@ a#project {
         width: 12vh;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
+        text-shadow: 0 0 .25vh black;
+        box-shadow: 0 0 .25vh black;
     }
     button#changeWallpaper {
         right: 14vh;
@@ -91,6 +88,7 @@ a#project {
         bottom: 10.24vh;
         right: 10.24vh;
         max-width: 68vh;
+        text-shadow: 0 0 .25vh black;
     }
     a#project {
         bottom: 0;
@@ -100,6 +98,8 @@ a#project {
         width: 9vh;
         border-top-left-radius: .5vh;
         border-top-right-radius: .5vh;
+        text-shadow: 0 0 .25vh black;
+        box-shadow: 0 0 .25vh black;
     }
 }
 
@@ -107,6 +107,7 @@ a#project {
     div#information {
         top: 7vw;
         left: 7vw;
+        text-shadow: 0 0 .25vw black;
     }
     div#date {
         font-size: 3.5vw;
@@ -120,6 +121,8 @@ a#project {
         width: 12vw;
         border-bottom-left-radius: .5vw;
         border-bottom-right-radius: .5vw;
+        text-shadow: 0 0 .25vw black;
+        box-shadow: 0 0 .25vw black;
     }
     button#changeWallpaper {
         right: 14vw;
@@ -132,6 +135,7 @@ a#project {
         bottom: 10.24vw;
         right: 10.24vw;
         max-width: 68vw;
+        text-shadow: 0 0 .25vw black;
     }
     a#project {
         bottom: 0;
@@ -141,5 +145,7 @@ a#project {
         width: 9vw;
         border-top-left-radius: .5vw;
         border-top-right-radius: .5vw;
+        text-shadow: 0 0 .25vw black;
+        box-shadow: 0 0 .25vw black;
     }
 }
