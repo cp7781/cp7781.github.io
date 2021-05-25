@@ -8,27 +8,31 @@ body {
 
 div#information {
     position: fixed;
-    color: white;
-    font-family: sans-serif;
-    text-shadow: 0 0 2px black;
-    font-family: 'Bellota Text', cursive;
+    color: seashell;
+    font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
+    text-shadow: 0 0 2px black;
 }
 
 button#changeWallpaper, button#changeQuote {
     position: fixed;
     top: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     color: seashell;
-    background-color: rgba(47, 79, 79, .68);
-    border: none;
+    text-shadow: 0 0 2px black;
+    box-shadow: 0 0 2px black;
+    border-top: none;
+    border-left: 1px solid seashell;
+    border-right: 1px solid seashell;
+    border-bottom: 1px solid seashell;
+    background-color: rgba(0, 0, 0, 0);
     margin: 0;
 }
 
 div#quote {
     color: seashell;
-    background-color: rgba(47, 79, 79, .68);
+    text-shadow: 0 0 2px black;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
@@ -41,29 +45,33 @@ div#quote a {
 }
 
 a#project {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
-    background-color: rgba(47, 79, 79, .68);
+    border-top: 1px solid seashell;
+    border-left: 1px solid seashell;
+    border-right: 1px solid seashell;
     color: seashell;
     text-decoration: none;
     text-align: center;
+    text-shadow: 0 0 2px black;
+    box-shadow: 0 0 2px black;
 }
 
 @media (orientation: landscape) {
     div#information {
-        top: 5.12vh;
-        left: 5.12vh;
+        top: 7vh;
+        left: 7vh;
     }
     button#changeWallpaper, button#changeQuote {
         padding: 1vh;
-        font-size: 1.5vh;
-        width: 10vh;
+        font-size: 2.75vh;
+        width: 12vh;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
     }
     button#changeWallpaper {
-        right: 12vh;
+        right: 14vh;
     }
     button#changeQuote {
         right: 1vh;
@@ -76,10 +84,6 @@ a#project {
     }
     div#quote {
         font-size: 4vh;
-        padding: 1vh;
-        padding-left: 2vh;
-        padding-right: 2vh;
-        border-radius: 1vh;
         bottom: 10.24vh;
         right: 10.24vh;
         max-width: 68vh;
@@ -88,8 +92,8 @@ a#project {
         bottom: 0;
         right: 1vh;
         padding: 1vh;
-        font-size: 1.5vh;
-        width: 7vh;
+        font-size: 2.75vh;
+        width: 9vh;
         border-top-left-radius: .5vh;
         border-top-right-radius: .5vh;
     }
@@ -97,8 +101,8 @@ a#project {
 
 @media (orientation: portrait) {
     div#information {
-        top: 5.12vw;
-        left: 5.12vw;
+        top: 7vw;
+        left: 7vw;
     }
     div#date {
         font-size: 3.5vw;
@@ -108,23 +112,19 @@ a#project {
     }
     button#changeWallpaper, button#changeQuote {
         padding: 1vw;
-        font-size: 1.5vw;
-        width: 10vw;
+        font-size: 2.75vw;
+        width: 12vw;
         border-bottom-left-radius: .5vw;
         border-bottom-right-radius: .5vw;
     }
     button#changeWallpaper {
-        right: 12vw;
+        right: 14vw;
     }
     button#changeQuote {
         right: 1vw;
     }
     div#quote {
         font-size: 4vw;
-        padding: 1vw;
-        padding-left: 2vw;
-        padding-right: 2vw;
-        border-radius: 1vw;
         bottom: 10.24vw;
         right: 10.24vw;
         max-width: 68vw;
@@ -133,8 +133,8 @@ a#project {
         bottom: 0;
         right: 1vw;
         padding: 1vw;
-        font-size: 1.5vw;
-        width: 7vw;
+        font-size: 2.75vw;
+        width: 9vw;
         border-top-left-radius: .5vw;
         border-top-right-radius: .5vw;
     }

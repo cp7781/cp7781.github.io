@@ -1,4 +1,7 @@
 export default function () {
+    const date = new Date()
+    changeDate(date)
+    changeTime(date)
     window.setInterval(() => {
         change()
     }, 1000)
@@ -6,7 +9,17 @@ export default function () {
 
 function change() {
     const date = new Date()
+    if (date.getSeconds() == 0) {
+        changeDate(date)
+    }
+    changeTime(date)
+}
+
+function changeDate(date) {
     document.querySelector('#date').innerHTML = toDateString(date)
+}
+
+function changeTime(date) {
     document.querySelector('#time').innerHTML = toTimeString(date)
 }
 
