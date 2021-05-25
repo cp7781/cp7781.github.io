@@ -30,6 +30,10 @@ button#changeWallpaper, button#changeQuote {
     margin: 0;
 }
 
+button#changeWallpaper:focus, button#changeQuote:focus {
+    outline: none;
+}
+
 div#quote {
     color: seashell;
     text-shadow: 0 0 2px black;
