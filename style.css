@@ -8,7 +8,7 @@ body {
 
 div#information {
     position: fixed;
-    color: seashell;
+    color: white;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     text-shadow: 0 0 2px black;
@@ -19,13 +19,13 @@ button#changeWallpaper, button#changeQuote {
     top: 0;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
-    color: seashell;
+    color: white;
     text-shadow: 0 0 2px black;
     box-shadow: 0 0 2px black;
     border-top: none;
-    border-left: 1px solid seashell;
-    border-right: 1px solid seashell;
-    border-bottom: 1px solid seashell;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
     background-color: rgba(0, 0, 0, 0);
     margin: 0;
 }
@@ -35,7 +35,7 @@ button#changeWallpaper:focus, button#changeQuote:focus {
 }
 
 div#quote {
-    color: seashell;
+    color: white;
     text-shadow: 0 0 2px black;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
@@ -44,7 +44,7 @@ div#quote {
 }
 
 div#quote a {
-    color: seashell;
+    color: white;
     text-decoration: none;
 }
 
@@ -52,10 +52,10 @@ a#project {
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
-    border-top: 1px solid seashell;
-    border-left: 1px solid seashell;
-    border-right: 1px solid seashell;
-    color: seashell;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    color: white;
     text-decoration: none;
     text-align: center;
     text-shadow: 0 0 2px black;
