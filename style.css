@@ -78,10 +78,10 @@ a#project {
         right: 1vh;
     }
     div#date {
-        font-size: 3.5vh;
+        font-size: 4.5vh;
     }
     div#time {
-        font-size: 7vh;
+        font-size: 9vh;
     }
     div#quote {
         font-size: 4vh;
@@ -110,10 +110,10 @@ a#project {
         text-shadow: 0 0 .25vw black;
     }
     div#date {
-        font-size: 3.5vw;
+        font-size: 4.5vw;
     }
     div#time {
-        font-size: 7vw;
+        font-size: 9vw;
     }
     button#changeWallpaper, button#changeQuote {
         padding: 1vw;
