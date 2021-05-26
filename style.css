@@ -63,8 +63,8 @@ a#project {
         width: 12vh;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
-        text-shadow: 0 0 .25vh black;
-        box-shadow: 0 0 .25vh black;
+        text-shadow: 0 0 .275vh black;
+        box-shadow: 0 0 .275vh black;
     }
     button#changeWallpaper {
         right: 14vh;
@@ -75,20 +75,21 @@ a#project {
     div#information {
         top: 7vh;
         left: 7vh;
-        text-shadow: 0 0 .25vh black;
     }
     div#date {
         font-size: 4.5vh;
+        text-shadow: 0 0 .275vh black;
     }
     div#time {
         font-size: 9vh;
+        text-shadow: 0 0 .275vh black;
     }
     div#quote {
         bottom: 9vh;
         right: 9vh;
         max-width: 68vh;
         font-size: 4vh;
-        text-shadow: 0 0 .25vh black;
+        text-shadow: 0 0 .275vh black;
     }
     a#project {
         bottom: 0;
@@ -98,54 +99,55 @@ a#project {
         width: 9vh;
         border-top-left-radius: .5vh;
         border-top-right-radius: .5vh;
-        text-shadow: 0 0 .25vh black;
-        box-shadow: 0 0 .25vh black;
+        text-shadow: 0 0 .275vh black;
+        box-shadow: 0 0 .275vh black;
     }
 }
 
 @media (orientation: portrait) {
     button#changeWallpaper, button#changeQuote {
+        border-bottom-left-radius: 1vw;
+        border-bottom-right-radius: 1vw;
         padding: 1vw;
-        font-size: 2.75vw;
-        width: 12vw;
-        border-bottom-left-radius: .5vw;
-        border-bottom-right-radius: .5vw;
-        text-shadow: 0 0 .25vw black;
-        box-shadow: 0 0 .25vw black;
+        width: 22vw;
+        font-size: 5vw;
+        text-shadow: 0 0 .5vw black;
+        box-shadow: 0 0 .5vw black;
     }
     button#changeWallpaper {
-        right: 14vw;
+        right: 24vw;
     }
     button#changeQuote {
         right: 1vw;
     }
     div#information {
-        top: 9vw;
-        left: 9vw;
-        text-shadow: 0 0 .5vw black;
+        top: 15vw;
+        left: 5vw;
     }
     div#date {
-        font-size: 3.5vh;
+        font-size: 7vw;
+        text-shadow: 0 0 .5vw black;
     }
     div#time {
-        font-size: 7vh;
+        font-size: 14vw;
+        text-shadow: 0 0 .5vw black;
     }
     div#quote {
-        bottom: 9vw;
-        left: 9vw;
-        max-width: 82vw;
-        font-size: 3.5vh;
+        bottom: 15vw;
+        left: 5vw;
+        max-width: 90vw;
+        font-size: 7vw;
         text-shadow: 0 0 .5vw black;
     }
     a#project {
         bottom: 0;
         right: 1vw;
         padding: 1vw;
-        font-size: 2.75vw;
-        width: 9vw;
-        border-top-left-radius: .5vw;
-        border-top-right-radius: .5vw;
-        text-shadow: 0 0 .25vw black;
-        box-shadow: 0 0 .25vw black;
+        font-size: 5vw;
+        width: 18vw;
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
+        text-shadow: 0 0 .5vw black;
+        box-shadow: 0 0 .5vw black;
     }
 }
