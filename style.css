@@ -45,6 +45,7 @@ div#quote a {
 }
 
 a#project {
+    bottom: 0;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
@@ -56,7 +57,7 @@ a#project {
     text-align: center;
 }
 
-@media (orientation: landscape) {
+@media (min-aspect-ratio: 68/100) {
     button#changeWallpaper, button#changeQuote {
         padding: 1vh;
         font-size: 2.75vh;
@@ -92,7 +93,6 @@ a#project {
         text-shadow: 0 0 .275vh black;
     }
     a#project {
-        bottom: 0;
         right: 1vh;
         padding: 1vh;
         font-size: 2.75vh;
@@ -104,7 +104,13 @@ a#project {
     }
 }
 
-@media (orientation: portrait) {
+@media (min-aspect-ratio: 68/100) and (max-aspect-ratio: 100/100) {
+    div#quote {
+        max-width: 68vw;
+    }
+}
+
+@media (max-aspect-ratio: 68/100) {
     button#changeWallpaper, button#changeQuote {
         border-bottom-left-radius: 1vw;
         border-bottom-right-radius: 1vw;
@@ -121,26 +127,25 @@ a#project {
         right: 1vw;
     }
     div#information {
-        top: 15vw;
+        top: 12vw;
         left: 5vw;
     }
     div#date {
-        font-size: 7vw;
+        font-size: 6vw;
         text-shadow: 0 0 .5vw black;
     }
     div#time {
-        font-size: 14vw;
+        font-size: 12vw;
         text-shadow: 0 0 .5vw black;
     }
     div#quote {
-        bottom: 15vw;
+        bottom: 12vw;
         left: 5vw;
         max-width: 90vw;
-        font-size: 7vw;
+        font-size: 6vw;
         text-shadow: 0 0 .5vw black;
     }
     a#project {
-        bottom: 0;
         right: 1vw;
         padding: 1vw;
         font-size: 5vw;
