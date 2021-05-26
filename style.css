@@ -127,19 +127,19 @@ a#project {
         right: 1vw;
     }
     div#information {
-        top: 15vw;
+        top: 12vw;
         left: 5vw;
     }
     div#date {
-        font-size: 7vw;
+        font-size: 6vw;
         text-shadow: 0 0 .5vw black;
     }
     div#time {
-        font-size: 14vw;
+        font-size: 12vw;
         text-shadow: 0 0 .5vw black;
     }
     div#quote {
-        bottom: 15vw;
+        bottom: 12vw;
         left: 5vw;
         max-width: 90vw;
         font-size: 6vw;
