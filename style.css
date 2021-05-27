@@ -20,9 +20,6 @@ button#changeWallpaper, button#changeQuote {
     font-weight: 400;
     color: white;
     border-top: none;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    border-bottom: 1px solid white;
     background-color: rgba(0, 0, 0, 0);
     margin: 0;
 }
@@ -49,9 +46,6 @@ a#project {
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
     position: fixed;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
     color: white;
     text-decoration: none;
     text-align: center;
@@ -64,8 +58,11 @@ a#project {
         width: 12vh;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
-        text-shadow: 0 0 .275vh black;
-        box-shadow: 0 0 .275vh black;
+        text-shadow: 0 0 .32vh black;
+        box-shadow: 0 0 .32vh black;
+        border-left: .16vh solid white;
+        border-right: .16vh solid white;
+        border-bottom: .16vh solid white;
     }
     button#changeWallpaper {
         right: 14vh;
@@ -79,18 +76,18 @@ a#project {
     }
     div#date {
         font-size: 4.5vh;
-        text-shadow: 0 0 .275vh black;
+        text-shadow: 0 0 .32vh black;
     }
     div#time {
         font-size: 9vh;
-        text-shadow: 0 0 .275vh black;
+        text-shadow: 0 0 .32vh black;
     }
     div#quote {
         bottom: 9vh;
         right: 9vh;
         max-width: 68vh;
         font-size: 4vh;
-        text-shadow: 0 0 .275vh black;
+        text-shadow: 0 0 .32vh black;
     }
     a#project {
         right: 1vh;
@@ -99,12 +96,18 @@ a#project {
         width: 9vh;
         border-top-left-radius: .5vh;
         border-top-right-radius: .5vh;
-        text-shadow: 0 0 .275vh black;
-        box-shadow: 0 0 .275vh black;
+        text-shadow: 0 0 .32vh black;
+        box-shadow: 0 0 .32vh black;
+        border-top: .16vh solid white;
+        border-left: .16vh solid white;
+        border-right: .16vh solid white;
     }
 }
 
 @media (min-aspect-ratio: 68/100) and (max-aspect-ratio: 100/100) {
+    div#information {
+        top: 9vh;
+    }
     div#quote {
         max-width: 68vw;
     }
@@ -117,8 +120,11 @@ a#project {
         padding: 1vw;
         width: 22vw;
         font-size: 5vw;
-        text-shadow: 0 0 .5vw black;
-        box-shadow: 0 0 .5vw black;
+        text-shadow: 0 0 .32vw black;
+        box-shadow: 0 0 .32vw black;
+        border-left: .16vw solid white;
+        border-right: .16vw solid white;
+        border-bottom: .16vw solid white;
     }
     button#changeWallpaper {
         right: 24vw;
@@ -127,23 +133,23 @@ a#project {
         right: 1vw;
     }
     div#information {
-        top: 12vw;
+        top: 14vw;
         left: 5vw;
     }
     div#date {
         font-size: 6vw;
-        text-shadow: 0 0 .5vw black;
+        text-shadow: 0 0 .32vw black;
     }
     div#time {
         font-size: 12vw;
-        text-shadow: 0 0 .5vw black;
+        text-shadow: 0 0 .32vw black;
     }
     div#quote {
         bottom: 12vw;
         left: 5vw;
         max-width: 90vw;
         font-size: 6vw;
-        text-shadow: 0 0 .5vw black;
+        text-shadow: 0 0 .32vw black;
     }
     a#project {
         right: 1vw;
@@ -152,7 +158,10 @@ a#project {
         width: 18vw;
         border-top-left-radius: 1vw;
         border-top-right-radius: 1vw;
-        text-shadow: 0 0 .5vw black;
-        box-shadow: 0 0 .5vw black;
+        text-shadow: 0 0 .32vw black;
+        box-shadow: 0 0 .32vw black;
+        border-top: .16vw solid white;
+        border-left: .16vw solid white;
+        border-right: .16vw solid white;
     }
 }
