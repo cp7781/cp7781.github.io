@@ -9,7 +9,7 @@ export default function () {
 
 function change() {
     const date = new Date()
-    if (date.getSeconds() == 0) {
+    if (date.getSeconds() == 0 && date.getMinutes() == 0 && date.getHours() == 0) {
         changeDate(date)
     }
     changeTime(date)
