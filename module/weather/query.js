@@ -6,7 +6,7 @@ export default function () {
     change()
     window.setInterval(() => {
         change()
-    }, 3600000)
+    }, 900000)
 }
 
 function change() {
