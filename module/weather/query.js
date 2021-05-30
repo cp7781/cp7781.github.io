@@ -16,7 +16,7 @@ function change() {
     request.addEventListener('load', event => {
         const currentCondition = event.target.response?.current_condition[0]
         if (currentCondition) {
-            document.querySelector('#weather').innerHTML = `temperature: ${currentCondition.temp_C} °C<br>pressure: ${currentCondition.pressure} mb<br>humidity: ${currentCondition.humidity} %`
+            document.querySelector('#weather').innerHTML = `temperature: ${currentCondition.temp_C} °C<br>pressure: ${currentCondition.pressure} hPa<br>humidity: ${currentCondition.humidity} %`
         } else {
             console.error(`got an unexpected response from ${url}`)
         }
