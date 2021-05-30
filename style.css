@@ -52,16 +52,20 @@ a#project {
 }
 
 @media (min-aspect-ratio: 68/100) {
-    button#changeWallpaper, button#changeQuote {
-        padding: 1vh;
+    button#changeWallpaper, button#changeQuote, div#information, div#quote, a#project {
+        text-shadow: 0 0 .32vh black;
+    }
+    button#changeWallpaper, button#changeQuote, a#project {
         font-size: 2.75vh;
+        box-shadow: 0 0 .32vh black;
+        padding: 1vh;
+        border-left: .16vh solid white;
+        border-right: .16vh solid white;
+    }
+    button#changeWallpaper, button#changeQuote {
         width: 12vh;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
-        text-shadow: 0 0 .32vh black;
-        box-shadow: 0 0 .32vh black;
-        border-left: .16vh solid white;
-        border-right: .16vh solid white;
         border-bottom: .16vh solid white;
     }
     button#changeWallpaper {
@@ -76,54 +80,55 @@ a#project {
     }
     div#date {
         font-size: 4.5vh;
-        text-shadow: 0 0 .32vh black;
     }
     div#time {
         font-size: 9vh;
-        text-shadow: 0 0 .32vh black;
+    }
+    div#weather {
+        font-size: 2.75vh;
     }
     div#quote {
         bottom: 9vh;
         right: 9vh;
         max-width: 68vh;
         font-size: 4vh;
-        text-shadow: 0 0 .32vh black;
     }
     a#project {
         right: 1vh;
-        padding: 1vh;
-        font-size: 2.75vh;
         width: 9vh;
         border-top-left-radius: .5vh;
         border-top-right-radius: .5vh;
-        text-shadow: 0 0 .32vh black;
-        box-shadow: 0 0 .32vh black;
         border-top: .16vh solid white;
-        border-left: .16vh solid white;
-        border-right: .16vh solid white;
     }
 }
 
 @media (min-aspect-ratio: 68/100) and (max-aspect-ratio: 100/100) {
     div#information {
         top: 9vh;
+        left: 9vw;
     }
     div#quote {
-        max-width: 68vw;
+        right: 9vw;
+        max-width: 82vw;
+        font-size: 3.5vh;
     }
 }
 
 @media (max-aspect-ratio: 68/100) {
+    button#changeWallpaper, button#changeQuote, div#information, div#quote, a#project {
+        text-shadow: 0 0 .32vw black;
+    }
+    button#changeWallpaper, button#changeQuote, a#project {
+        font-size: 5vw;
+        box-shadow: 0 0 .32vw black;
+        padding: 1vw;
+        border-left: .16vw solid white;
+        border-right: .16vw solid white;
+    }
     button#changeWallpaper, button#changeQuote {
         border-bottom-left-radius: 1vw;
         border-bottom-right-radius: 1vw;
-        padding: 1vw;
         width: 22vw;
-        font-size: 5vw;
-        text-shadow: 0 0 .32vw black;
-        box-shadow: 0 0 .32vw black;
-        border-left: .16vw solid white;
-        border-right: .16vw solid white;
         border-bottom: .16vw solid white;
     }
     button#changeWallpaper {
@@ -138,30 +143,24 @@ a#project {
     }
     div#date {
         font-size: 6vw;
-        text-shadow: 0 0 .32vw black;
     }
     div#time {
         font-size: 12vw;
-        text-shadow: 0 0 .32vw black;
+    }
+    div#weather {
+        font-size: 5vw;
     }
     div#quote {
         bottom: 12vw;
         left: 5vw;
         max-width: 90vw;
         font-size: 6vw;
-        text-shadow: 0 0 .32vw black;
     }
     a#project {
         right: 1vw;
-        padding: 1vw;
-        font-size: 5vw;
         width: 18vw;
         border-top-left-radius: 1vw;
         border-top-right-radius: 1vw;
-        text-shadow: 0 0 .32vw black;
-        box-shadow: 0 0 .32vw black;
         border-top: .16vw solid white;
-        border-left: .16vw solid white;
-        border-right: .16vw solid white;
     }
 }

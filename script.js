@@ -1,19 +1,21 @@
-import changeQuote from './module/quote/change.js'
-import changeWallpaper from './module/wallpaper/change.js'
-import changeInformation from './module/information/change.js'
+import queryQuote from './module/quote/query.js'
+import queryWallpaper from './module/wallpaper/query.js'
+import changeDateTime from './module/datetime/change.js'
+import queryWeather from './module/weather/query.js'
 
 window.addEventListener('load', event => {
-    changeQuote()
-    changeWallpaper()
-    changeInformation()
+    queryQuote()
+    queryWallpaper()
+    changeDateTime()
+    queryWeather()
 })
 
 document.querySelector('#changeWallpaper').addEventListener('click', event => {
-    changeWallpaper()
+    queryWallpaper()
     event.stopPropagation()
 })
 document.querySelector('#changeQuote').addEventListener('click', event => {
-    changeQuote()
+    queryQuote()
     event.stopPropagation()
 })
 
@@ -23,10 +25,10 @@ window.addEventListener('keypress', event => {
             alert(`Try to use shortcuts:\nChange the wallpaper by pressing key 'w'.\nChange the quote by pressing key 'q'.`)
             break
         case 'w':
-            changeWallpaper()
+            queryWallpaper()
             break
         case 'q':
-            changeQuote()
+            queryQuote()
             break
     }
 })

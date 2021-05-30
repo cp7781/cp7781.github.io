@@ -16,7 +16,13 @@
 				"type": "firefox",
 				"request": "launch",
 				"name": "Firefox",
-				"file": "${workspaceFolder}/index.html"
+				"file": "${workspaceFolder}/index.html",
+				"firefoxArgs": [
+					"-width",
+					"1024",
+					"-height",
+					"768"
+				]
 			}
 		]
 	}
