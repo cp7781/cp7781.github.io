@@ -16,7 +16,7 @@ div#information, button#changeWallpaper, button#changeQuote, div#quote, a#projec
     font-weight: 400;
 }
 
-div#weather a, div#quote a {
+div#information a, div#quote a {
     color: white;
     text-decoration: none;
 }

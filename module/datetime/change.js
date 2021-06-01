@@ -16,7 +16,7 @@ function change() {
 }
 
 function changeDate(date) {
-    document.querySelector('#date').innerHTML = toDateString(date)
+    document.querySelector('#date a').innerHTML = toDateString(date)
 }
 
 function changeTime(date) {
