@@ -10,7 +10,7 @@ button#changeWallpaper, button#changeQuote, div#information, div#quote, a#projec
     position: fixed;
 }
 
-div#information, button#changeWallpaper, button#changeQuote, div#quote, a#project {
+div#information, input#location, button#changeWallpaper, button#changeQuote, div#quote, a#project {
     color: white;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
@@ -21,15 +21,22 @@ div#information a, div#quote a {
     text-decoration: none;
 }
 
-button#changeWallpaper, button#changeQuote {
-    top: 0;
-    border-top: none;
+button#changeWallpaper, button#changeQuote, input#location {
     background-color: rgba(0, 0, 0, 0);
     margin: 0;
 }
 
+button#changeWallpaper, button#changeQuote {
+    top: 0;
+    border-top: none;
+}
+
 button#changeWallpaper:focus, button#changeQuote:focus {
     outline: none;
+}
+
+input#location {
+    border: none;
 }
 
 div#quote {
@@ -43,7 +50,7 @@ a#project {
 }
 
 @media (min-aspect-ratio: 68/100) {
-    button#changeWallpaper, button#changeQuote, div#information, div#quote, a#project {
+    button#changeWallpaper, button#changeQuote, div#information, input#location, div#quote, a#project {
         text-shadow: 0 0 .32vh black;
     }
     button#changeWallpaper, button#changeQuote, a#project {
@@ -75,7 +82,7 @@ a#project {
     div#time {
         font-size: 9vh;
     }
-    div#weather {
+    input#location, div#weather {
         font-size: 2.75vh;
     }
     div#quote {
@@ -106,7 +113,7 @@ a#project {
 }
 
 @media (max-aspect-ratio: 68/100) {
-    button#changeWallpaper, button#changeQuote, div#information, div#quote, a#project {
+    button#changeWallpaper, button#changeQuote, div#information, input#location, div#quote, a#project {
         text-shadow: 0 0 .32vw black;
     }
     button#changeWallpaper, button#changeQuote, a#project {
@@ -138,7 +145,7 @@ a#project {
     div#time {
         font-size: 12vw;
     }
-    div#weather {
+    input#location, div#weather {
         font-size: 5vw;
     }
     div#quote {

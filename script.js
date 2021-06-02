@@ -19,16 +19,20 @@ document.querySelector('#changeQuote').addEventListener('click', event => {
     event.stopPropagation()
 })
 
-window.addEventListener('keypress', event => {
-    switch (event.key) {
-        default:
-            alert(`Try to use shortcuts:\nChange the wallpaper by pressing key 'w'.\nChange the quote by pressing key 'q'.`)
-            break
-        case 'w':
-            queryWallpaper()
-            break
-        case 'q':
-            queryQuote()
-            break
+window.addEventListener('keydown', event => {
+    if (event.altKey) {
+        switch (event.key) {
+            case 'w':
+                queryWallpaper()
+                break
+            case 'q':
+                queryQuote()
+                break
+            case 'h':
+                alert(`Try to use shortcuts:\nChange the wallpaper by pressing key 'w'.\nChange the quote by pressing key 'q'.`)
+                break
+            default:
+                break
+        }
     }
 })
