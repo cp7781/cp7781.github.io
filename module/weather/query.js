@@ -7,9 +7,15 @@ export default function () {
     window.setInterval(() => {
         change()
     }, 1800000)
-    document.querySelector('#location').addEventListener('change', event => {
-        change()
-    })
+    {
+        const location = document.querySelector('#location')
+        location.addEventListener('change', event => {
+            change()
+        })
+        location.addEventListener('keyup', event => {
+            event.stopPropagation()
+        })   
+    }
 }
 
 function change() {

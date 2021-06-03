@@ -19,18 +19,29 @@ document.querySelector('#changeQuote').addEventListener('click', event => {
     event.stopPropagation()
 })
 
-window.addEventListener('keydown', event => {
-    if (event.altKey) {
-        switch (event.key) {
-            case 'w':
-                queryWallpaper()
-                break
-            case 'q':
-                queryQuote()
-                break
-            case 'h':
-                alert(`Try to use shortcuts:\nChange the wallpaper by pressing key 'w'.\nChange the quote by pressing key 'q'.\n\nThe location above the weather informations can be edited.`)
-                break
-        }
+window.addEventListener('keyup', event => {
+    switch (event.key) {
+        case 'w':
+            queryWallpaper()
+            break
+        case 'q':
+            queryQuote()
+            break
+        case 'l':
+            document.querySelector('#location').focus()
+            break
+        case 'Tab':
+        case 'Shift':
+        case 'Control':
+        case 'Alt':
+        case 'ArrowUp':
+        case 'ArrowLeft':
+        case 'ArrowRight':
+        case 'ArrowDown':
+            /* keyboard navigation */
+            break
+        default:
+            alert(`Try to use shortcuts:\nChange the wallpaper by pressing key 'w'.\nChange the quote by pressing key 'q'.\n\nThe location above the weather informations can be edited, either by clicking or pressing key 'l'`)
+            break
     }
 })
