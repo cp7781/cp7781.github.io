@@ -29,9 +29,7 @@ window.addEventListener('keydown', event => {
                 queryQuote()
                 break
             case 'h':
-                alert(`Try to use shortcuts:\nChange the wallpaper by pressing key 'w'.\nChange the quote by pressing key 'q'.`)
-                break
-            default:
+                alert(`Try to use shortcuts:\nChange the wallpaper by pressing key 'w'.\nChange the quote by pressing key 'q'.\n\nThe location above the weather informations can be edited.`)
                 break
         }
     }
