@@ -1,17 +1,33 @@
+import { getQuote, putQuote } from '../database/interface.js'
+
 /*
 query information from Quote Garden
 more information on how to use: https://github.com/pprathameshmore/QuoteGarden
 */
 export default function () {
+    getQuote(1, quote => {
+        if (quote) {
+            changeUserInterface(quote)
+        } else {
+            requestQuote()
+        }
+    })
+}
+
+export function requestQuote() {
     const url = 'https://quote-garden.herokuapp.com/api/v3/quotes/random'
     const request = new XMLHttpRequest()
     request.responseType = 'json'
     request.addEventListener('load', event => {
         const data = event.target.response?.data[0]
         if (data) {
-            const quote = document.querySelector('#quote')
-            quote.innerHTML = `<a href="https://translate.google.com/?text=${encodeURIComponent(data.quoteText)}">${data.quoteText}</a><br># <a href="https://www.google.com/search?q=${encodeURIComponent(data.quoteAuthor)}">${data.quoteAuthor}</a>`
-            quote.style.visibility = 'visible'
+            const quote = {
+                identifier: 1,
+                text: data.quoteText,
+                author: data.quoteAuthor
+            }
+            putQuote(quote)
+            changeUserInterface(quote)
         } else {
             console.error(`got an unexpected response from ${url}`)
         }
@@ -21,4 +37,10 @@ export default function () {
     })
     request.open('GET', url)
     request.send()
+}
+
+function changeUserInterface(quote) {
+    const divQuote = document.querySelector('#quote')
+    divQuote.innerHTML = `<a href="https://translate.google.com/?text=${encodeURIComponent(quote.text)}">${quote.text}</a><br># <a href="https://www.google.com/search?q=${encodeURIComponent(quote.author)}">${quote.author}</a>`
+    divQuote.style.visibility = 'visible'
 }

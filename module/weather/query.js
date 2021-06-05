@@ -1,42 +1,68 @@
+import { getLocation, putLocation } from '../database/interface.js'
+
 /*
 query information from wttr.in
 more information on how to use: https://github.com/chubin/wttr.in
 */
 export default function () {
-    change()
+    const inputLocation = document.querySelector('#location')
+    getLocation(1, location => {
+        if (location) {
+            inputLocation.value = location.name
+            change()
+        } else {
+            change()
+        }
+    })
     window.setInterval(() => {
         change()
     }, 1800000)
-    {
-        const location = document.querySelector('#location')
-        location.addEventListener('change', event => {
-            change()
-        })
-        location.addEventListener('keyup', event => {
-            event.stopPropagation()
-        })   
-    }
+    inputLocation.addEventListener('change', event => {
+        change()
+    })
+    inputLocation.addEventListener('keyup', event => {
+        if (event.key == 'Escape') {
+            event.target.blur()
+        }
+        event.stopPropagation()
+    })
 }
 
 function change() {
-    const location = document.querySelector('#location')
-    const url = `https://wttr.in/${encodeURIComponent(location.value)}?format=j1`
+    const inputLocation = document.querySelector('#location')
+    let location = inputLocation.value
+    if (location) {
+        putLocation({ identifier: 1, name: location })
+    }
+    requestWeather(location)
+}
+
+function requestWeather(location) {
+    const url = `https://wttr.in/${encodeURIComponent(location)}?format=j1`
     const request = new XMLHttpRequest()
     request.responseType = 'json'
     request.addEventListener('load', event => {
-        const currentCondition = event.target.response?.current_condition[0]
-        if (currentCondition) {
-            if (!location.value) {
-                location.value = event.target.response?.nearest_area[0]?.areaName[0].value
-            }
-            document.querySelector('#weather').innerHTML = `<a href="https://wttr.in/${encodeURIComponent(location.value)}">temperature: ${currentCondition.temp_C} °C<br>pressure: ${currentCondition.pressure} hPa<br>humidity: ${currentCondition.humidity} %</a>`
-        } else {
-            console.error(`got an unexpected response from ${url}`)
+        const response = event.target.response
+        if (!location) {
+            location = response.nearest_area[0].areaName[0].value
+            putLocation({ identifier: 1, name: location })
         }
+        const currentCondition = response.current_condition[0]
+        changeUserInterface({
+            location: location,
+            temperature: currentCondition.temp_C,
+            pressure: currentCondition.pressure,
+            humidity: currentCondition.humidity
+        })
     })
     request.addEventListener('error', event => {
         console.error(`could not query ${url}`)
     })
     request.open('GET', url)
     request.send()
+}
+
+function changeUserInterface(weather) {
+    document.querySelector('#location').value = weather.location
+    document.querySelector('#weather').innerHTML = `<a href="https://wttr.in/${encodeURIComponent(weather.location)}">temperature: ${weather.temperature} °C<br>pressure: ${weather.pressure} hPa<br>humidity: ${weather.humidity} %</a>`
 }
