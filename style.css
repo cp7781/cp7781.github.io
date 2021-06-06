@@ -22,7 +22,7 @@ div#information a, div#quote a {
 }
 
 button#changeWallpaper, button#changeQuote, input#location {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
     margin: 0;
 }
 
@@ -51,20 +51,20 @@ a#project {
 
 @media (min-aspect-ratio: 68/100) {
     button#changeWallpaper, button#changeQuote, div#information, input#location, div#quote, a#project {
-        text-shadow: 0 0 .32vh black;
+        text-shadow: 0 0 .2vh black;
     }
     button#changeWallpaper, button#changeQuote, a#project {
         font-size: 2.75vh;
-        box-shadow: 0 0 .32vh black;
+        box-shadow: 0 0 .2vh black;
         padding: 1vh;
-        border-left: .16vh solid white;
-        border-right: .16vh solid white;
+        border-left: .1vh solid white;
+        border-right: .1vh solid white;
     }
     button#changeWallpaper, button#changeQuote {
         width: 12vh;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
-        border-bottom: .16vh solid white;
+        border-bottom: .1vh solid white;
     }
     button#changeWallpaper {
         right: 14vh;
@@ -96,7 +96,7 @@ a#project {
         width: 9vh;
         border-top-left-radius: .5vh;
         border-top-right-radius: .5vh;
-        border-top: .16vh solid white;
+        border-top: .1vh solid white;
     }
 }
 
@@ -114,20 +114,20 @@ a#project {
 
 @media (max-aspect-ratio: 68/100) {
     button#changeWallpaper, button#changeQuote, div#information, input#location, div#quote, a#project {
-        text-shadow: 0 0 .32vw black;
+        text-shadow: 0 0 .2vw black;
     }
     button#changeWallpaper, button#changeQuote, a#project {
         font-size: 5vw;
-        box-shadow: 0 0 .32vw black;
+        box-shadow: 0 0 .3vw black;
         padding: 1vw;
-        border-left: .16vw solid white;
-        border-right: .16vw solid white;
+        border-left: .1vw solid white;
+        border-right: .1vw solid white;
     }
     button#changeWallpaper, button#changeQuote {
         border-bottom-left-radius: 1vw;
         border-bottom-right-radius: 1vw;
         width: 22vw;
-        border-bottom: .16vw solid white;
+        border-bottom: .1vw solid white;
     }
     button#changeWallpaper {
         right: 24vw;
@@ -159,6 +159,6 @@ a#project {
         width: 18vw;
         border-top-left-radius: 1vw;
         border-top-right-radius: 1vw;
-        border-top: .16vw solid white;
+        border-top: .1vw solid white;
     }
 }
