@@ -62,8 +62,8 @@ a#project {
     }
     button#changeWallpaper, button#changeQuote {
         width: 12vh;
-        border-bottom-left-radius: 1vh;
-        border-bottom-right-radius: 1vh;
+        border-bottom-left-radius: .5vh;
+        border-bottom-right-radius: .5vh;
         border-bottom: .1vh solid white;
     }
     button#changeWallpaper {
@@ -94,8 +94,8 @@ a#project {
     a#project {
         right: 1vh;
         width: 9vh;
-        border-top-left-radius: 1vh;
-        border-top-right-radius: 1vh;
+        border-top-left-radius: .5vh;
+        border-top-right-radius: .5vh;
         border-top: .1vh solid white;
     }
 }
@@ -125,8 +125,8 @@ a#project {
         border-right: .1vw solid white;
     }
     button#changeWallpaper, button#changeQuote {
-        border-bottom-left-radius: 2vw;
-        border-bottom-right-radius: 2vw;
+        border-bottom-left-radius: 1vw;
+        border-bottom-right-radius: 1vw;
         width: 22vw;
         border-bottom: .1vw solid white;
     }
@@ -158,8 +158,8 @@ a#project {
     a#project {
         right: 1vw;
         width: 18vw;
-        border-top-left-radius: 2vw;
-        border-top-right-radius: 2vw;
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
         border-top: .1vw solid white;
     }
 }
