@@ -43,6 +43,10 @@ function requestWeather(location) {
     request.responseType = 'json'
     request.addEventListener('load', event => {
         const response = event.target.response
+        if (!response) {
+            changeUserInterface(null)
+            return
+        }
         if (!location) {
             location = response.nearest_area[0].areaName[0].value
             putLocation({ identifier: 1, name: location })
@@ -63,6 +67,12 @@ function requestWeather(location) {
 }
 
 function changeUserInterface(weather) {
-    document.querySelector('#location').value = weather.location
-    document.querySelector('#weather').innerHTML = `<a href="https://wttr.in/${encodeURIComponent(weather.location)}">temperature: ${weather.temperature} °C<br>pressure: ${weather.pressure} hPa<br>humidity: ${weather.humidity} %</a>`
+    const location = document.querySelector('#location')
+    if (weather) {
+        location.style.visibility = 'visible';
+        location.value = weather.location
+        document.querySelector('#weather').innerHTML = `<a href="https://wttr.in/${encodeURIComponent(weather.location)}">temperature: ${weather.temperature} °C<br>pressure: ${weather.pressure} hPa<br>humidity: ${weather.humidity} %</a>`
+    } else {
+        location.style.visibility = 'hidden';
+    }
 }
