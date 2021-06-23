@@ -31,10 +31,8 @@ div#quote a {
     text-decoration: none;
 }
 
-button#changeWallpaper,
-button#changeQuote,
 input#location {
-    background: transparent;
+    background:transparent;
     margin: 0;
 }
 
@@ -222,3 +220,31 @@ a#project {
     }
 
 }
+
+.button {
+    background: transparent;
+    cursor: pointer;
+}
+
+.button:hover {
+    background:white;
+    background-color:white;
+    border: none;
+
+    transition-duration: 0.2s;
+
+}
+
+.button:active {
+    background:transparent;
+}
+
+
+button#changeWallpaper,
+    button#changeQuote,
+    div#information,
+    input#location,
+    div#quote,
+    a#project {
+        text-shadow: 2px 2px 4px black;
+    }
