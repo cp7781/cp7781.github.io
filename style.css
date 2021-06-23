@@ -6,32 +6,46 @@ body {
     background-position: center;
 }
 
-button#changeWallpaper, button#changeQuote, div#information, div#quote, a#project {
+button#changeWallpaper, 
+button#changeQuote, 
+div#information, 
+div#quote, 
+a#project {
     position: fixed;
 }
 
-div#information, input#location, button#changeWallpaper, button#changeQuote, div#quote, a#project {
+div#information, 
+input#location, 
+button#changeWallpaper,
+button#changeQuote,
+div#quote,
+a#project {
     color: white;
     font-family: 'Annie Use Your Telescope', cursive;
     font-weight: 400;
 }
 
-div#information a, div#quote a {
+div#information a,
+div#quote a {
     color: white;
     text-decoration: none;
 }
 
-button#changeWallpaper, button#changeQuote, input#location {
+button#changeWallpaper,
+button#changeQuote,
+input#location {
     background: transparent;
     margin: 0;
 }
 
-button#changeWallpaper, button#changeQuote {
+button#changeWallpaper,
+button#changeQuote {
     top: 0;
     border-top: none;
 }
 
-button#changeWallpaper:focus, button#changeQuote:focus {
+button#changeWallpaper:focus,
+button#changeQuote:focus {
     outline: none;
 }
 
@@ -50,47 +64,67 @@ a#project {
 }
 
 @media (min-aspect-ratio: 60/100) {
-    button#changeWallpaper, button#changeQuote, div#information, input#location, div#quote, a#project {
+
+    button#changeWallpaper,
+    button#changeQuote,
+    div#information,
+    input#location,
+    div#quote,
+    a#project {
         text-shadow: 0 0 .2vh black;
     }
-    button#changeWallpaper, button#changeQuote, a#project {
+
+    button#changeWallpaper,
+    button#changeQuote,
+    a#project {
         font-size: 2.75vh;
         box-shadow: 0 0 .2vh black;
         padding: .75vh;
         border-left: .1vh solid white;
         border-right: .1vh solid white;
     }
-    button#changeWallpaper, button#changeQuote {
+    
+    button#changeWallpaper,
+    button#changeQuote {
         width: 12vh;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
         border-bottom: .1vh solid white;
     }
+    
     button#changeWallpaper {
         right: 14vh;
     }
+    
     button#changeQuote {
         right: 1vh;
     }
+    
     div#information {
         top: 6vh;
         left: 6vh;
     }
+    
     div#date {
         font-size: 4.5vh;
     }
+    
     div#time {
         font-size: 9vh;
     }
-    input#location, div#weather {
+    
+    input#location,
+    div#weather {
         font-size: 2.75vh;
     }
+    
     div#quote {
         bottom: 10vh;
         right: 10vh;
         max-width: 68vh;
         font-size: 4vh;
     }
+    
     a#project {
         right: 1vh;
         width: 9vh;
@@ -98,63 +132,87 @@ a#project {
         border-top-right-radius: .5vh;
         border-top: .1vh solid white;
     }
+
 }
 
 @media (min-aspect-ratio: 60/100) and (max-aspect-ratio: 100/100) {
+
     div#information {
         top: 6vh;
         left: 7vw;
     }
+
     div#quote {
         right: 7vw;
         bottom: 7vh;
         max-width: 86vw;
         font-size: 3.5vh;
     }
+
 }
 
 @media (max-aspect-ratio: 60/100) {
-    button#changeWallpaper, button#changeQuote, div#information, input#location, div#quote, a#project {
+
+    button#changeWallpaper,
+    button#changeQuote,
+    div#information,
+    input#location,
+    div#quote,
+    a#project {
         text-shadow: 0 0 .3vw black;
     }
-    button#changeWallpaper, button#changeQuote, a#project {
+
+    button#changeWallpaper,
+    button#changeQuote,
+    a#project {
         font-size: 5vw;
         box-shadow: 0 0 .3vw black;
         padding: 1vw;
         border-left: .1vw solid white;
         border-right: .1vw solid white;
     }
-    button#changeWallpaper, button#changeQuote {
+    
+    button#changeWallpaper,
+    button#changeQuote {
         border-bottom-left-radius: 1vw;
         border-bottom-right-radius: 1vw;
         width: 22vw;
         border-bottom: .1vw solid white;
     }
+    
     button#changeWallpaper {
         right: 24vw;
     }
+    
     button#changeQuote {
         right: 1vw;
     }
+    
     div#information {
         top: 14vw;
         left: 5vw;
     }
+    
     div#date {
         font-size: 6vw;
     }
+    
     div#time {
         font-size: 12vw;
     }
-    input#location, div#weather {
+    
+    input#location,
+    div#weather {
         font-size: 5vw;
     }
+    
     div#quote {
         bottom: 12vw;
         left: 5vw;
         max-width: 90vw;
         font-size: 6vw;
     }
+    
     a#project {
         right: 1vw;
         width: 18vw;
@@ -162,4 +220,5 @@ a#project {
         border-top-right-radius: 1vw;
         border-top: .1vw solid white;
     }
+
 }
