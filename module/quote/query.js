@@ -41,6 +41,6 @@ export function requestQuote() {
 
 function changeUserInterface(quote) {
     const divQuote = document.querySelector('#quote')
-    divQuote.innerHTML = `<a href="https://translate.google.com/?text=${encodeURIComponent(quote.text)}">${quote.text}</a><br># <a href="https://www.google.com/search?q=${encodeURIComponent(quote.author)}">${quote.author}</a>`
+    divQuote.innerHTML = `<a href="https://translate.google.com/?text=${encodeURIComponent(quote.text)}" class="noDecoration">${quote.text}</a><br># <a href="https://www.google.com/search?q=${encodeURIComponent(quote.author)}" class="noDecoration">${quote.author}</a>`
     divQuote.style.visibility = 'visible'
 }

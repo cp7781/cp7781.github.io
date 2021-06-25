@@ -71,7 +71,7 @@ function changeUserInterface(weather) {
     if (weather) {
         location.style.visibility = 'visible';
         location.value = weather.location
-        document.querySelector('#weather').innerHTML = `<a href="https://wttr.in/${encodeURIComponent(weather.location)}">temperature: ${weather.temperature} °C<br>pressure: ${weather.pressure} hPa<br>humidity: ${weather.humidity} %</a>`
+        document.querySelector('#weather').innerHTML = `<a href="https://wttr.in/${encodeURIComponent(weather.location)}" class="noDecoration">temperature: ${weather.temperature} °C<br>pressure: ${weather.pressure} hPa<br>humidity: ${weather.humidity} %</a>`
     } else {
         location.style.visibility = 'hidden';
     }
