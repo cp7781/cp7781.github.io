@@ -32,17 +32,24 @@ body {
     background: transparent;
 }
 
-input#location {
-    border: none;
-    padding: 0;
+.button {
+    border-style: solid;
+    border-color: white;
 }
 
 .buttonTop {
     top: 0;
+    border-top: none;
 }
 
 .buttonBottom {
     bottom: 0;
+    border-bottom: none;
+}
+
+input#location {
+    border: none;
+    padding: 0;
 }
 
 div#quote {
@@ -63,11 +70,10 @@ a#project {
         font-size: 2.75vh;
         box-shadow: 0 0 .2vh black;
         padding: .75vh;
-        border: .1vh solid white;
+        border-width: .1vh;
     }
 
     .buttonTop {
-        border-top: none;
         border-bottom-left-radius: .5vh;
         border-bottom-right-radius: .5vh;
     }
@@ -75,7 +81,6 @@ a#project {
     .buttonBottom {
         border-top-left-radius: .5vh;
         border-top-right-radius: .5vh;
-        border-bottom: none;
     }
     
     button#changeWallpaper,
@@ -149,11 +154,10 @@ a#project {
         font-size: 5vw;
         box-shadow: 0 0 .3vw black;
         padding: 1vw;
-        border: .1vw solid white;
+        border-width: .1vw;
     }
 
     .buttonTop {
-        border-top: none;
         border-bottom-left-radius: 1vw;
         border-bottom-right-radius: 1vw;
     }
@@ -161,7 +165,6 @@ a#project {
     .buttonBottom {
         border-top-left-radius: 1vw;
         border-top-right-radius: 1vw;
-        border-bottom: none;
     }
     
     button#changeWallpaper,
