@@ -32,7 +32,7 @@ window.addEventListener('keyup', event => {
                 document.querySelector('#location').focus()
                 break
             default:
-                alert(`Try to use shortcuts:\nChange the wallpaper by pressing 'W'.\nChange the quote by pressing 'Q'.\n\nIf the weather information service is available, the location can be edited by pressing 'E'.`)
+                alert(`Try to use shortcuts:\n\nChange the wallpaper by pressing W.\n\nChange the quote by pressing Q.\n\nIf weather information service is available, the location can be edited by pressing E.`)
                 break
         }
     } else if (event.key == 'Escape') {
