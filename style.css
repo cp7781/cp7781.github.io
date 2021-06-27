@@ -19,11 +19,6 @@ body {
     font-weight: 400;
 }
 
-.noDecoration {
-    color: white;
-    text-decoration: none;
-}
-
 .noOutline {
     outline: none;
 }
@@ -45,6 +40,11 @@ body {
 .buttonBottom {
     bottom: 0;
     border-bottom: none;
+}
+
+a.noDecoration {
+    color: white;
+    text-decoration: none;
 }
 
 input#location {
